@@ -11,6 +11,7 @@ The integration will use these official character illustrations for:
 
 ---
 
+
 ## 2. Character Image Inventory & Specialized Agent Roles
 
 | Character | Source Image File | AI Agent Specialization & Persona | Accent Color |

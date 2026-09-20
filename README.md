@@ -1,362 +1,264 @@
 <div align="center">
 
-<img src="./docs/logo.png" alt="Munder Difflin — agent harness to run an office of your clones" width="340">
+<img src="./public/Doremon-character-img/doraemon.png" alt="Doraemon AI Agents — 4D Pocket Autonomous Agent Fleet by Anubhav" width="260">
 
-# Munder Difflin
+# Doraemon AI Agents
 
-### Agent harness to run an office of your clones
+### Autonomous 4D Pocket Agent Fleet — Orchestrated by Anubhav
 
-**Free, open source and performant** — a multi-agent harness that works with the
-subscriptions you already pay for, on their hourly limits. It turns the terminal coding CLI
-you already run into a clone of you, one that keeps working while you're away and
-coordinates a whole office of agents on your own machine.
+**Free, open source, and performant** — a next-generation multi-agent harness engineered by **Anubhav**. It transforms the terminal coding CLIs you already run into a collaborative fleet of autonomous 22nd-century AI agents, working 24/7 on your local machine with live 2D office visualization.
 
-Wraps [Claude Code](https://claude.com/claude-code), Antigravity (Gemini), OpenAI Codex,
-**xAI Grok**, **Kimi Code**, **Gemini CLI**, **Qwen**, **OpenCode**, **Crush**,
-**pi.dev**, **GitHub Copilot CLI**, and **Cursor** — with bring-your-own keys and local LLMs.
-Agents that message, route, and remember, coordinated by **your clone** (Michael) and
-visualized as avatars at work on a shared office floor.
+Powered by **Doraemon** (Command Center & 4D Gadget Master) and **Anubhav**, orchestrating real CLI engines:
+[Claude Code](https://claude.com/claude-code), **Google Antigravity (Gemini)**, **OpenAI Codex**, **xAI Grok**, **Kimi Code**, **Gemini CLI**, **Qwen**, **OpenCode**, **Crush**, **pi.dev**, **GitHub Copilot CLI**, and **Cursor** — with bring-your-own keys and local LLMs.
 
 <p>
-  <em>Electron · React · TypeScript · Pixi.js · xterm.js · node-pty</em>
+  <em>Electron · React · TypeScript · Pixi.js · xterm.js · node-pty · 4D Pocket</em>
 </p>
 
 <p>
-  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-F4D35E.svg?style=flat-square&labelColor=6E1423"></a>
-  <a href="./CHANGELOG.md"><img alt="Version: 0.4.5" src="https://img.shields.io/badge/version-0.4.5-F4D35E.svg?style=flat-square&labelColor=6E1423"></a>
-  <img alt="Status: prototype" src="https://img.shields.io/badge/status-working%20prototype-F4F1EA.svg?style=flat-square&labelColor=6E1423">
-  <img alt="Platform: macOS | Windows | Linux" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-F4F1EA.svg?style=flat-square&labelColor=6E1423">
-  <a href="./CONTRIBUTING.md"><img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-F4D35E.svg?style=flat-square&labelColor=6E1423"></a>
-  <a href="https://discord.gg/SEDzP5ZPk5"><img alt="Discord" src="https://img.shields.io/badge/Discord-join%20the%20office-F4D35E.svg?style=flat-square&labelColor=6E1423"></a>
+  <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-38bdf8.svg?style=flat-square&labelColor=0f172a"></a>
+  <a href="./CHANGELOG.md"><img alt="Version: 0.4.5" src="https://img.shields.io/badge/version-0.4.5-38bdf8.svg?style=flat-square&labelColor=0f172a"></a>
+  <img alt="Status: working" src="https://img.shields.io/badge/status-active%20fleet-10b981.svg?style=flat-square&labelColor=0f172a">
+  <img alt="Platform: Windows | macOS | Linux" src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-38bdf8.svg?style=flat-square&labelColor=0f172a">
+  <a href="./CONTRIBUTING.md"><img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-38bdf8.svg?style=flat-square&labelColor=0f172a"></a>
+  <a href="https://github.com/nextgencode13/doremon-ai-agents"><img alt="Creator: Anubhav" src="https://img.shields.io/badge/creator-Anubhav-f59e0b.svg?style=flat-square&labelColor=0f172a"></a>
 </p>
 
 <br>
 
-<img src="./docs/media/og.png" alt="Munder Difflin — A hive of agents that message, route, and remember" width="1240">
-
-<br>
-
-<!-- Inline player renders on github.com (raw URL required; relative paths only link). -->
-<video src="https://github.com/chaitanyagiri/munder-difflin/raw/main/docs/media/hero.mp4" poster="https://github.com/chaitanyagiri/munder-difflin/raw/main/docs/media/og.png" controls muted loop playsinline width="820">
-  <a href="https://github.com/chaitanyagiri/munder-difflin/raw/main/docs/media/hero.mp4">▶ Watch the floor — Munder Difflin running a hive of Claude Code agents</a>
-</video>
+<div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+  <img src="./public/Doremon-character-img/nobita.png" width="90" alt="Nobita">
+  <img src="./public/Doremon-character-img/shizuka.png" width="90" alt="Shizuka">
+  <img src="./public/Doremon-character-img/gian.png" width="90" alt="Gian">
+  <img src="./public/Doremon-character-img/suneo.png" width="90" alt="Suneo">
+  <img src="./public/Doremon-character-img/dorami.png" width="90" alt="Dorami">
+  <img src="./public/Doremon-character-img/dekisugi.png" width="90" alt="Dekisugi">
+</div>
 
 </div>
 
 ---
 
 > [!NOTE]
-> **The world's best agents. The world's worst paper company.**
-> Munder Difflin takes the terminal-agent CLIs you already run — `claude`, `agy`, `codex`, `grok`,
-> `kimi`, `qwen`, `opencode`, `crush`, `pi`, and `copilot` — and turns them
-> into a self-coordinating team: each agent gets long-term memory, a mailbox, and a desk on a 2D
-> office floor — and **your clone** (Michael) routes work between them while you watch. He's the
-> boss of the floor; you're still the boss of him.
+> **Built by Anubhav — 22nd Century Intelligence on Your Desktop.**
+> **Doraemon AI Agents** takes the terminal-agent CLIs you run — `claude`, `agy`, `codex`, `grok`, `kimi`, `qwen`, `opencode`, `crush`, `pi`, and `copilot` — and turns them into a self-coordinating team. Each agent gets long-term memory, an atomic inbox/outbox mailbox, and a desk on a live 2D office floor. **Doraemon** acts as the supreme orchestrator and 4D Gadget Master, routing missions and delegating tasks across the squad under **Anubhav's** direction.
+
+---
 
 ## Contents
 
-- [What it is](#what-it-is)
-- [How it works](#how-it-works)
+- [What It Is](#what-it-is)
+- [The Doraemon Fleet Roster](#the-doraemon-fleet-roster)
+- [How It Works](#how-it-works)
 - [Features](#features)
-- [Getting started](#getting-started)
+- [Getting Started](#getting-started)
 - [Architecture](#architecture)
-- [Project structure](#project-structure)
-- [Design system](#design-system)
+- [Project Structure](#project-structure)
+- [Design System](#design-system)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
-- [Telemetry](#telemetry)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+- [License & Credits](#license--credits)
 
-## What it is
+---
 
-Munder Difflin is a desktop app that wraps **real terminal-agent CLIs** as fully-capable agents,
-wires them into a **hive mind**, and puts **your clone** in charge — Michael, the one agent *you*
-talk to in order to get things done. Under the hood it runs the **fastest memory layer in the
-world** so every agent remembers what it learns and recalls it instantly.
+## What It Is
 
-- **Every terminal is an agent.** Each `claude`, `agy`, `codex`, `grok`, `kimi`, `qwen`, `opencode`, `crush`, `pi`, `copilot`, or custom session runs as a real
-  process in a pseudo-terminal (`node-pty`), byte-for-byte authentic, rendered with xterm.js.
-- **Every agent is an avatar.** Sessions appear as characters on a Pixi.js office floor — they walk
-  to stations as they work, and envelopes fly desk-to-desk when they message each other.
-- **The hive coordinates them.** Agents read their memory and drain a mailbox; the router moves
-  messages between inboxes; the GOD agent adjudicates, assigns, and escalates only when it needs you.
-- **Memory that's instant.** A markdown-first memory layer with a semantic recall index means agents
-  remember across sessions and recall in milliseconds.
+Created by **Anubhav**, **Doraemon AI Agents** is a desktop application that wraps **real terminal-agent CLIs** into autonomous agents, networks them through a local **hive mind**, and places **Doraemon** at the helm of the Command Center. Under the hood, it runs a markdown-first semantic memory palace so every agent learns, adapts, and remembers across sessions.
 
-## How it works
+- **Authentic Terminal CLIs.** Each `claude`, `agy`, `codex`, `grok`, `kimi`, `qwen`, `opencode`, `crush`, `pi`, `copilot`, or custom CLI runs inside a real pseudo-terminal (`node-pty`) rendered with `xterm.js`.
+- **Live 2D Office Floor.** Agents appear as animated pixel characters on a Pixi.js 2D floor — walking to desks, gathering around the Kanban board, and sending message envelopes across desks.
+- **Autonomous Hive Coordination.** Agents manage their inboxes and write to outboxes; Doraemon routes tasks, decomposes complex objectives, and escalates only high-leverage decisions to Anubhav.
+- **Instant Semantic Memory.** A markdown-first memory layer indexed into a shared MemPalace enables instantaneous recall of past decisions and codebase insights.
+
+---
+
+## The Doraemon Fleet Roster
+
+| Character | Specialist Role & Persona | Core Responsibility | Signature Color |
+| :--- | :--- | :--- | :--- |
+| **Doraemon** | **Command Center & 4D Gadget Master** | Fleet Orchestrator, global task triage, MCP tool router | `#1e90ff` (Sky Blue) |
+| **Nobita** | **Rapid Prototyper & Scripter** | Quick scripts, rapid experimentation, gadget-driven runs | `#f4d03f` (Yellow) |
+| **Shizuka** | **QA, Code Review & Documentation** | Test coverage, spotless docs, strict quality audits | `#ff69b4` (Pink) |
+| **Gian (Takeshi)** | **Heavy Refactors & Build Engineer** | Complex migrations, build pipeline fixes, dependency upgrades | `#e67e22` (Orange) |
+| **Suneo** | **APIs, Webhooks & Integrations** | External services, webhooks, cloud endpoints, Slack ops | `#2980b9` (Cyan) |
+| **Dorami** | **Subagent Auditor & Safety Watchdog** | Infinite loop breaker, token spend auditor, hive health | `#f1c40f` (Gold) |
+| **Dekisugi** | **Chief Architect & Algorithms** | High-performance algorithms, system design, data structures | `#27ae60` (Green) |
+| **Jaiko** | **UI/UX & Frontend Designer** | CSS styling, responsive layout, markdown design | `#c0392b` (Red) |
+| **Sensei** | **Security Auditor & Strict Linter** | Zero-warning linter, TypeScript compiler checks | `#7f8c8d` (Grey) |
+| **Sewashi** | **Roadmaps & Scheduled Missions** | Future planner, cron missions, automated nightly tests | `#9b59b6` (Purple) |
+| **Mini-Dora** | **Subagent Helper & Fast Tools** | Lightweight micro-tasks, fast file edits, helper scripts | `#e74c3c` (Bright Red) |
+| **Tamako (Mom)** | **Spend Gatekeeper & Budget Manager** | Token limits, cost cap enforcement, quota protection | `#d35400` (Amber) |
+| **Nobisuke (Dad)**| **Background Worker & Watchdog** | Long-running background batch jobs, process monitors | `#34495e` (Navy) |
+| **Gian's Mom** | **Emergency Hard Circuit Breaker** | Instantly stops runaway agents and terminating rogue loops | `#962d22` (Crimson) |
+| **Suneo's Mom** | **Premium Model Router & Context Ops** | Routes heavy reasoning tasks to top-tier flagship LLMs | `#8e44ad` (Violet) |
+
+---
+
+## How It Works
 
 ```
-            you ── talk to ──►  ┌─────────────┐
-                                │  GOD agent  │  orchestrator / supervisor
-                                │ (Michael's  │  roster · routing · adjudication
-                                │   office)   │  blackboard · task ledger
-                                └──────┬──────┘
-                                       │ assigns · routes · escalates
-              ┌────────────────────────┼────────────────────────┐
-              ▼                         ▼                         ▼
-        ┌───────────┐            ┌───────────┐            ┌───────────┐
-        │  agent A  │  message   │  agent B  │  message   │  agent C  │
-        │ provider  │ ─────────► │ provider  │ ─────────► │ provider  │
-        │  + memory │            │  + memory │            │  + memory │
-        └───────────┘            └───────────┘            └───────────┘
-              └──────── shared hive: memory · mailbox · blackboard · log ───────┘
+            Anubhav ── requests ──► ┌──────────────────────┐
+                                    │    DORAEMON (GOD)    │  Supreme Orchestrator
+                                    │  4D Command Center   │  Roster · Routing · Adjudication
+                                    │   (Anywhere Desk)    │  Blackboard · Task Ledger
+                                    └──────────┬───────────┘
+                                               │ assigns · delegates · escalates
+               ┌───────────────────────────────┼───────────────────────────────┐
+               ▼                               ▼                               ▼
+        ┌─────────────┐                 ┌─────────────┐                 ┌─────────────┐
+        │   NOBITA    │    mailbox      │   SHIZUKA   │    mailbox      │    GIAN     │
+        │ Prototyping │ ──────────────► │  QA & Docs  │ ──────────────► │  Refactors  │
+        │   + memory  │                 │   + memory  │                 │   + memory  │
+        └─────────────┘                 └─────────────┘                 └─────────────┘
+               └────────────── shared hive: memory · mailboxes · tasks.json ──────────────┘
 ```
 
-1. **You spawn agents** — each is a normal terminal process (`claude`, `agy`, `codex`, or custom)
-   with its own working directory, identity, and provider-specific lifecycle.
-2. **Agents collaborate through the hive** — a local git repo of plain files. They write to their own
-   `outbox/`; the harness's router delivers into recipients' `inbox/`. No agent ever touches git
-   (single-committer design avoids `index.lock` corruption).
-3. **The GOD agent runs the floor** — it reads every request, resolves routine ones itself (keeping
-   the system fully autonomous), and only escalates *critical* items (spend, destructive ops, scope
-   changes) into an approvals queue you act on.
-4. **Everything is visible** — you watch avatars move, envelopes fly, and the live terminal stream;
-   you can type back into any session, browse its files, and read its git history.
+1. **Anubhav Dispatches Tasks**: State your goal in the Command Center or speak via push-to-talk voice.
+2. **Doraemon Decomposes & Routes**: Doraemon analyzes the project, chooses the best specialist (e.g. Shizuka for QA, Gian for build fixes), and writes the contract to their inbox.
+3. **Autonomous Team Execution**: Agents run their own tools, inspect code, run terminal commands, and pass messages desk-to-desk.
+4. **Transparent Visibility**: Watch agents navigate on the 2D office floor, monitor live token meters and OTel waterfalls, or jump directly into any full-screen terminal.
 
-See [`HIVE.md`](./HIVE.md) for the full multi-agent design, [`SPEC.md`](./SPEC.md) for the
-terminal/event plane, and [`DESIGN.md`](./DESIGN.md) for the visual system.
+---
 
 ## Features
 
-**The floor**
-- **Every terminal is a real agent.** Claude Code, Antigravity (Gemini), OpenAI Codex, xAI Grok, Kimi Code, Gemini CLI, Qwen, OpenCode, Crush, pi.dev, GitHub Copilot CLI, Cursor, or a custom command — each in its own `node-pty` PTY, rendered with xterm.js.
-- **Every agent is an avatar.** A Pixi.js office floor where agents walk to stations, envelopes fly desk to desk, and avatar state reflects real work.
-- **A GOD orchestrator you talk to.** It routes tasks, adjudicates traffic, and escalates only what needs a human. Or press **Talk** and run the floor by voice.
-- **Per-agent git worktrees.** Optional isolation so parallel agents never collide on branches.
+### 🏢 2D Office Floor & 4D Command Center
+- **Interactive Floor**: Real-time Pixi.js office floor with authentic character sprites, directional walking animations, and dynamic thought bubbles.
+- **4D Pocket Command Center**: Unified control center with Tasks Kanban, Ask Me board, Triggers, Schedule Missions, MemPalace, and Activity feeds.
+- **Built-in Monaco IDE**: Code tree, diff viewer, git commit graphs, and branch comparison integrated into the desktop experience.
 
-**Memory & coordination**
-- **The hive** — per-agent memory, atomic-file mailboxes, a shared blackboard, an append-only event log, single-committer git.
-- **Semantic recall** — markdown memory mined into a shared palace, searchable from the UI, with condensation so it doesn't grow forever.
-- **Enterprise Knowledge Graph** — your own documents and policies, queryable by any agent.
+### 🧠 Semantic Memory & Autonomous Hive
+- **Durable Memory (`memory.md`)**: Agents record architectural insights and lessons learned, indexed automatically into MemPalace.
+- **Atomic File Mailboxes**: Inter-agent messaging (`inbox/` and `outbox/`) managed by the hive engine with zero git conflicts.
+- **Circuit Breaker**: Multi-stage safety guardrail (steer $\rightarrow$ constrain $\rightarrow$ halt) preventing runaway spend or error loops.
 
-**Control & safety**
-- **Human gates** — spend, scope, and destructive ops escalate to you. Steer mid-run or stop gracefully.
-- **Circuit breaker** — a steer → constrain → stop ladder for agents that loop, storm errors, or blow their budget.
-- **Budgets & telemetry** — per-agent token budgets, real cost from transcripts, a durable ledger, OTel spans, and a tool waterfall.
+### 🔌 Model & Provider Flexibility
+- Supports Anthropic Claude Code, Google Antigravity (Gemini), OpenAI Codex, xAI Grok, Kimi Code, Gemini CLI, Qwen, OpenCode, Crush, pi.dev, GitHub Copilot, and Cursor.
+- Full support for **local models** via Ollama, LM Studio, and vLLM with Bring-Your-Own-Key (BYOK) privacy.
 
-**Command Center**
-- Kanban tasks with dependencies, scheduled missions + heartbeat, live fleet monitoring, memory search, activity log, and a CI watcher.
-- **Skills** — what every agent can already do across Claude Code, OpenCode and Codex, plus a browsable catalog of 227 more with search, filters, install and uninstall.
-- **Built-in Monaco IDE** — file tree, editor tabs, save, plus CHANGES · HISTORY · COMPARE git rails with commit graph, diffs, branch compare, and guarded checkout. All fs/git access brokered through main.
+---
 
-**Getting work in and out**
-- **Slack & webhooks** — message a channel or POST a webhook; Michael can spawn an ephemeral worker, reply in-thread, and tear it down.
-- **Shareable hires + Agent Gallery** — import a role from a `munderdifflin://hire` link; import only pre-fills the form, a human still spawns it. Browse roles at the [Agent Gallery](https://munderdiffl.in/hires/).
-- **BYOK keys + local LLMs** — per-provider keys in a write-only secret broker, plus Ollama / LM Studio / vLLM base URLs. Guides: [open models](https://munderdiffl.in/blog/run-munder-difflin-on-open-models/) · [Mac Mini](https://munderdiffl.in/blog/run-munder-difflin-on-a-mac-mini/).
-- **Updates in one click** — the title-bar badge fetches the build for your machine and tells you how to install it, and it reads `latest` once a check confirms you are current. The first run afterwards opens that release's notes as a designed page rather than a version number. Background auto-update stays in Settings.
-- **Prerequisites** — one Settings page showing which supporting tools (uv, git, Node, MemPalace, each agent CLI) you have, what each is for, and a button that asks Michael to install what is missing.
-
-> [!NOTE]
-> **Status: v0.4.5, the release that fixes three things you trusted and were quietly wrong.**
-> Cost reporting reset its counter on every app restart while the session id stayed the same, so
-> the floor under reported what you had actually spent. It is now folded from the ledger, with a
-> separate session figure kept alongside. Semantic memory never worked on Apple Silicon: CoreML
-> overflowed the quantized embedding graph, every vector came back NaN, and every upsert was
-> rejected. Embeddings are pinned to CPU on macOS. And agents did not reliably reach each other,
-> so mail could sit in an inbox nobody woke up for. There is now an inbox wake watchdog, no more
-> stale nudges, and mail to a missing inbox is bounced and logged instead of dropped. Also in this
-> release: triggers that run on weekdays at a time of day, clickable paths in every terminal, one
-> editor instead of two, one click updates, and a renderer inside Chromium's sandbox.
-> 23 community pull requests landed.
-> **If you're on 0.3.8, update:** that build's usage-limit guard never released the agents it held,
-> and it has been removed entirely.
-> macOS (signed & notarized), Windows, and Linux builds are on the
-> [releases page](https://github.com/chaitanyagiri/munder-difflin/releases/latest).
-
-<div align="right">(<a href="#munder-difflin">↑ back to top</a>)</div>
-
-## Getting started
+## Getting Started
 
 ### Prerequisites
+- **Windows, macOS, or Linux**
+- **Node.js 18+** and **npm**
+- C/C++ build tools for `node-pty` native compilation:
+  - Windows: Visual Studio Build Tools (`npm install -g windows-build-tools` or VS Community C++)
+  - macOS: `xcode-select --install`
+  - Linux: `build-essential` / `python3`
+- At least one CLI agent installed (e.g., `claude`, `agy`, `codex`, `gemini`, etc.)
 
-- **macOS, Windows, or Linux**.
-- **Node.js 18+** and npm.
-- A **C/C++ toolchain** for `node-pty`'s native addon — on macOS, install Xcode Command Line Tools:
-  ```bash
-  xcode-select --install
-  ```
-- At least one supported agent CLI on your `PATH` — **[Claude Code](https://claude.com/claude-code)**
-  (`claude`, the default), **Antigravity** (`agy`), **OpenAI Codex** (`codex`), **xAI Grok** (`grok`),
-  **Kimi Code** (`kimi`), **Gemini CLI** (`gemini`), **Qwen** (`qwen`), **OpenCode** (`opencode`),
-  **Crush** (`crush`), **pi.dev** (`pi`), **GitHub Copilot** (`copilot`), or **Cursor** (`cursor-agent`).
-  Most missing CLIs self-heal: the harness runs the installer in the
-  terminal and continues into the new binary.
-- *Optional:* **your own API keys and local LLMs** in **Settings → AI Engines** (Ollama / LM Studio / vLLM).
-- *Optional:* the semantic memory index for instant cross-session recall — markdown memory works without it.
-
-### Install & run
+### Installation
 
 ```bash
-git clone https://github.com/chaitanyagiri/munder-difflin.git
-cd munder-difflin
-npm install        # postinstall rebuilds node-pty against Electron's ABI
-npm run dev        # launches the Electron app with hot reload
+# Clone the repository
+git clone https://github.com/nextgencode13/doremon-ai-agents.git
+cd doremon-ai-agents
+
+# Install dependencies & build native modules
+npm install
+
+# Start the application in development mode
+npm run dev
 ```
 
-On first launch you'll go through the onboarding wizard, then land on the floor. Use **Add agent** to
-spawn your first session — the GOD agent seats itself in Michael's office automatically.
-
-### Other scripts
+### Scripts
 
 ```bash
-npm run build      # production build via electron-vite
-npm run preview    # preview the production build
-npm run typecheck  # type-check the node (main/preload) and web (renderer) projects
+npm run build      # Production bundle via electron-vite
+npm run typecheck  # Strict TypeScript check across Node & Web
+npm run preview    # Preview production bundle locally
+npm run dist:win   # Package Windows installer / executable (.exe)
+npm run dist:mac   # Package macOS installer (.dmg)
+npm run dist:linux # Package Linux AppImage / deb
 ```
 
-> If `node-pty` fails to load after an Electron upgrade, re-run `npm install` (the `postinstall` hook
-> runs `electron-rebuild` against the current Electron ABI).
+---
 
 ## Architecture
 
-Two data planes feed one renderer:
-
 ```
-┌───────────────────────────────────────────────────────────────┐
-│                     Electron Renderer (React)                  │
-│   ┌──────────────────┐    ┌──────────────────────────────┐    │
-│   │ Office Floor      │    │ Terminal + Command Bar       │    │
-│   │ (Pixi.js)        │    │ Files + Git tabs (xterm.js)  │    │
-│   └─────────▲────────┘    └────────────▲─────────────────┘    │
-│             │ avatar state             │ pty bytes / fs / git  │
-└─────────────┼──────────────────────────┼───────────────────────┘
-              │ IPC (contextBridge: window.cth)
-       ┌──────┴──────────┐        ┌──────┴─────────────┐
-       │  Event Plane    │        │  Terminal Plane    │
-       │  hooks / hive   │        │  node-pty PTYs     │
-       │  router + GOD   │        │  + fs + git        │
-       └────────▲────────┘        └──────▲─────────────┘
-                │ hook payloads          │ stdin / stdout
-                └─────────┬──────────────┘
-                   ┌──────┴──────────────┐
-                   │ claude / agy / codex│
-                   └─────────────────────┘
+┌────────────────────────────────────────────────────────────────────────┐
+│                        Electron Renderer (React)                       │
+│    ┌───────────────────────────┐    ┌─────────────────────────────┐    │
+│    │     2D Office Floor       │    │   Full Terminal + Tabs      │    │
+│    │  (Pixi.js Doraemon Cast)  │    │      (xterm.js + IDE)       │    │
+│    └─────────────▲─────────────┘    └──────────────▲──────────────┘    │
+│                  │ avatar positions/actions        │ pty stream / fs   │
+└──────────────────┼─────────────────────────────────┼───────────────────┘
+                   │ IPC Bridge (window.cth)
+         ┌─────────┴─────────┐             ┌─────────┴─────────┐
+         │    Event Plane    │             │   Terminal Plane  │
+         │   Hive / Memory   │             │   node-pty PTYs   │
+         │  Router + Doraemon│             │   + Git Worktrees │
+         └─────────▲─────────┘             └─────────▲─────────┘
+                   │ lifecycle hooks                 │ stdin / stdout
+                   └─────────────────┬───────────────┘
+                                     │
+                   ┌─────────────────┴─────────────────┐
+                   │ claude / agy / codex / grok / etc.│
+                   └───────────────────────────────────┘
 ```
 
-- **Terminal plane.** The main process owns a `PtyManager` that spawns each agent as a `node-pty`
-  process and streams output over per-id IPC (`pty:data:<id>`). The renderer talks only through a
-  typed `window.cth` bridge ([`src/preload/index.ts`](./src/preload/index.ts)), which also exposes
-  sandboxed filesystem and git helpers.
-- **Hive / event plane.** `hive.ts` is the on-disk multi-agent layer; `hooks.ts` runs the hook
-  server that provider bridges POST lifecycle payloads to (`cth-hook` for Claude Code, `agy-hook`
-  for Antigravity). `memory.ts` wraps the semantic memory CLI. The router delivers messages, drains
-  provider outboxes, the GOD agent adjudicates, and idle/inbox wakeups keep workers draining mail.
+---
 
-## Project structure
+## Project Structure
 
 ```
 src/
-  main/                      Electron main process (Node)
-    index.ts                 window, IPC handlers, quit guard
-    pty.ts                   node-pty manager (spawn/write/resize/kill/stream)
-    hive.ts                  on-disk multi-agent layer (memory, mailboxes, router)
-    hooks.ts                 hook server + provider hook shims (`cth-hook`, `agy-hook`)
-    memory.ts                semantic memory layer (CLI wrapper, degrade-to-noop)
-    config.ts                harness config persistence + home setup
-    transcript.ts            reads ~/.claude/projects/ JSONL transcripts for real token/cost telemetry
-    telemetry.ts             live OTel collector + usage/cost feed for observability
-    usage.ts / pricing.ts    UsageProvider seam + per-model cost attribution
-    breaker.ts / control.ts  cost/runaway circuit breaker (steer/constrain/stop) + HITL gate / steer / stop
-    reflect.ts               MemoryReflector — memory condensation
-    db.ts                    SQLite durable store (window bounds + history) + durable cost ledger
-    github.ts                GitHub issue + CI run ingestion via the gh CLI
-    shellEnv.ts              resolve PATH and shell env for child processes
-    fs.ts / git.ts           sandboxed filesystem + git bridges
-  preload/                   contextBridge → typed window.cth API
+  main/                      Electron Main Process (Node.js)
+    index.ts                 App lifecycle, window creation, IPC handlers
+    pty.ts                   node-pty process manager
+    hive.ts                  Autonomous hive coordination & memory router
+    hooks.ts                 Hook server for CLI agent bridges
+    memory.ts                Semantic MemPalace integration
+  preload/                   Sandboxed IPC context bridge (window.cth)
   renderer/src/
-    App.tsx                  top-level layout + wiring
-    design/                  tokens.css / tokens.ts / global.css (design source of truth)
-    components/              PixelPanel, AgentDetailPanel, CommandBar, ApprovalsPanel, MemoryPanel, …
-    CommandCenterPanel,      Michael's control surface (Terminal/Floor/Memory/Activity/Tasks/Triggers/Handbook tabs)
-    ToolWaterfall,           per-agent tool-span waterfall for the observability view
-    TasksKanban,             dependency-aware kanban board (Tasks tab)
-    ThreadsPanel,            hive message conversation viewer (Messages tab)
-    MessageQueueComposer,    park messages for a busy agent
-    scene/office/            Pixi office floor: OfficeFloor, Character, Camera, cast, pathfinding, …
-    store/ · hooks/          zustand store, event loop, PTY parser, typewriter
-    assets/                  tilesets, maps, character sheets (see ATTRIBUTION.md)
-docs/                        `logo.png`, `banner.png`, landing page (GitHub Pages → munderdiffl.in)
-docs/media/                  `og.png` (social previews) + rendered Remotion clips
-landing-remotion/            Remotion project that renders the landing page's "how it works" clips
-HIVE.md · SPEC.md · DESIGN.md   multi-agent · terminal/event · visual design
-docs/message-queue.md        who may type into an agent's terminal, and when
+    App.tsx                  Main layout and top bar (Doraemon AI Agents)
+    components/              UI widgets, modals, and Command Center
+    scene/office/            Pixi.js 2D office floor & character sprites
+    assets/doraemon/         Official Doraemon character artwork registry
+    store/                   Zustand reactive state management
+public/
+  Doremon-character-img/     15 authentic high-definition character illustrations
 ```
 
-<div align="right">(<a href="#munder-difflin">↑ back to top</a>)</div>
+---
 
-## Design system
+## Design System
 
-The aesthetic is **Animal Crossing × Earthbound × SNES menu UI** — pixel-snapped, chunky, friendly.
-[`DESIGN.md`](./DESIGN.md) is canonical; every component derives from its tokens. The Munder Difflin
-brand layers a **Dunder-Mifflin maroon** (`#6E1423`) and **gold** (`#F4D35E`) on top for logo and
-chrome. The 15 avatars are the cast of *The Office*, differentiated by hair/skin/shirt recipes.
+The visual aesthetic combines **22nd-century Doraemon styling** with an **SNES / Earthbound neo-brutalist UI**:
+- **Doraemon Sky Blue** (`#1e90ff`) & **Bell Gold** (`#f1c40f`) brand palette
+- Authentic character busts for all 15 cast members
+- Retro pixelated borders, crisp typography, and high-contrast dark/light mode
+
+---
 
 ## Roadmap
 
-Shipped through **v0.4.5** — twelve agent engines with BYOK keys and local LLMs, voice orchestration,
-the hive (memory · mailboxes · blackboard · event log), Command Center with kanban and weekday
-schedules, a built-in Monaco IDE with git rails, integrations registry + secret broker,
-Slack-spawned workers, shareable hires and the Agent Gallery, observability and the circuit
-breaker, durable persistence, session resume, multi-window floors, one click updates, a Skills
-browser, a live Prerequisites check, cost reporting folded from the ledger, and semantic memory
-that works on Apple Silicon.
-Full history in [`CHANGELOG.md`](./CHANGELOG.md).
+- [x] **Complete Doraemon Rebrand**: Full transformation of the hive orchestrator to Doraemon.
+- [x] **15-Character Expanded Roster**: Specialized personas, briefing templates, and asset pipeline.
+- [x] **2D Floor Character Rendering**: Walking sprites and direction-facing avatar textures in Pixi.js.
+- [x] **MemPalace Memory Migration**: Auto-migrated durable memory headers to Doraemon.
+- [ ] **Anywhere Door (どこでもドア) Fast-Travel**: Visual portal transitions between repositories and workspaces.
+- [ ] **Time Machine (タイムマシン) Undo/Branch Warp**: Interactive git history visualizer shaped like the Time Machine.
 
-Next up:
-
-- [ ] **More chat integrations** — Telegram and richer chat bridges that pipe a channel into Michael's queue and route replies back out.
-- [ ] **More engines & integration templates** — keep growing the engine roster and the integrations registry.
-- [ ] **Fuller avatar coverage** — drive the remaining station visits and tool-bubbles entirely from real hook events.
-- [ ] **Durable layout & command history** — extend persistence to agent layout and per-session history.
-
-<div align="right">(<a href="#munder-difflin">↑ back to top</a>)</div>
+---
 
 ## Contributing
 
-Contributions are welcome — this is an early prototype with a lot of surface area. Start with
-[`CONTRIBUTING.md`](./CONTRIBUTING.md). The short version: fork, `npm install && npm run dev`, keep
-`npm run typecheck` green, and **derive any new UI from [`DESIGN.md`](./DESIGN.md) tokens**. Good
-first areas: wiring real hook events, the add-agent flow, the config drawer, and cross-platform work.
+Contributions and ideas are welcome! To contribute:
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feat/my-gadget`).
+3. Ensure type safety: `npm run typecheck`.
+4. Submit a Pull Request with clear before/after screenshots or terminal recordings.
 
-> [!IMPORTANT]
-> **Every pull request must show a before and an after** — screenshots, or a recording when the
-> thing moves — under the `### Before` and `### After` headings in the PR template. This is checked
-> automatically and a PR without it does not merge. "My change has no UI" is not an exemption; it
-> just changes what the evidence looks like. See
-> [Evidence is mandatory](./CONTRIBUTING.md#evidence-is-mandatory).
+---
 
-Questions, bugs, or want to show off your office? Join the Discord: **<https://discord.gg/SEDzP5ZPk5>**. Add your Discord handle to a PR and you'll get the `employee of the month` role when it merges.
+## License & Credits
 
-## Telemetry
-
-Official builds send a **small set of anonymous usage events** (app opened, agent spawned, feature
-used) — never prompts, code, file paths, or agent output. The complete event list, the anonymity
-guarantees, and the three ways to opt out (Settings toggle, `DO_NOT_TRACK`, or building from
-source — forks compile with no key and send nothing) are documented in
-[`TELEMETRY.md`](./TELEMETRY.md).
-
-## License
-
-> [!IMPORTANT]
-> **Asset licensing.** The bundled pixel art (tilesets and maps) is **Modern Interiors - RPG Tileset
-> [16X16]** by [LimeZu](https://limezu.itch.io/moderninteriors), used under the **Complete Version
-> licence**, which permits editing and use in commercial and non-commercial projects. **Credit to
-> LimeZu is required by that licence** and must stay in place. The Office cast is not LimeZu art. It
-> is drawn procedurally in `portraitArt.ts`. See
-> [`src/renderer/src/assets/ATTRIBUTION.md`](./src/renderer/src/assets/ATTRIBUTION.md).
-
-The **source code** is licensed under the **MIT License** — see [`LICENSE`](./LICENSE). The MIT grant
-covers the code only; the bundled pixel art is licensed separately from LimeZu and is carved out in
-the `LICENSE` scope note. *Munder Difflin* is an affectionate parody and is not affiliated with NBC's *The Office* or
-Dunder Mifflin.
-
-## Acknowledgements
-
-- [LimeZu](https://limezu.itch.io/) for the *Modern Interiors* pixel-art tilesets (Complete Version licence).
-- [`shahar061/the-office`](https://github.com/shahar061/the-office) for the office tileset/map vendoring.
-- [Pixi.js](https://pixijs.com/) · [xterm.js](https://xtermjs.org/) · [node-pty](https://github.com/microsoft/node-pty) · [electron-vite](https://electron-vite.org/) · [CodeMirror](https://codemirror.net/) for the libraries this is built on.
-- [Remotion](https://www.remotion.dev/) for the landing page's animated "how it works" clips (`landing-remotion/`).
-- *The Office* (US) for Munder Difflin, Inc.
-#   d o r e m o n - a i - a g e n t s  
- 
+- **Creator & Lead Maintainer**: **Anubhav** ([@nextgencode13](https://github.com/nextgencode13))
+- **Source Code License**: [MIT License](./LICENSE)
+- **Pixel Art Tilesets**: *Modern Interiors* by [LimeZu](https://limezu.itch.io/), used under the Complete Version license.
+- **Character Imagery**: Doraemon character illustrations used for personal/educational and open-source demonstration.

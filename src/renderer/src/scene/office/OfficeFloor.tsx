@@ -90,27 +90,26 @@ const ERRAND_THOUGHTS: Record<ErrandKind, readonly string[]> = {
   smoke:     ['the floor runs itself 🚬', 'boss break.', 'thinking big thoughts 🚬', 'I DECLARE… a break']
 };
 
-/** What workers blurt out when the boss walks by — performative excellence.
+/** What workers blurt out when Doraemon walks by — performative excellence.
  *  `{done}` is replaced with that worker's REAL done-task count. */
 const SUCK_UP_LINES = [
-  'already shipped {done} tasks, Michael. raise? 🥺',
-  '{done} tasks done this week, boss!',
-  'great vision as always, boss!',
-  'I was JUST about to do exactly that!',
-  'love the tie today, Michael',
-  'working hard, boss! 💪',
-  'best boss ever. genuinely.'
+  'already shipped {done} tasks, Doraemon! Dorayaki time? 🥞',
+  '{done} tasks done with the 4D gadgets!',
+  'great gadget choice as always, Doraemon!',
+  'I was JUST about to use that gadget!',
+  'love the golden bell today, Doraemon 🔔',
+  'working hard, Doraemon! 💪',
+  'best robot cat boss ever. genuinely.'
 ] as const;
 
 /** What they actually say once he's out of earshot. */
 const GOSSIP_LINES = [
-  'has he ever actually written code?',
-  "another 'quick sync' that took an hour…",
-  "'world's best boss' — he bought that mug himself",
-  'he pinned MY task as his idea',
-  'the cigar smell, honestly…',
-  'he watered the plant. ONE plant. his own.',
-  "did you hear him? 'I DECLARE… a break'"
+  'did he pull out the Anywhere Door again?',
+  'Nobita is probably napping in the corner…',
+  'hope Gian does not start singing in the break room…',
+  'Doraemon hid another box of dorayaki in his 4D pocket',
+  'Memory bread really saved me on that algorithm!',
+  'did Sewashi schedule that 22nd-century cron job?'
 ] as const;
 
 /** Lines an avatar throws over its shoulder right after finishing a task. */
@@ -1373,7 +1372,8 @@ export function OfficeFloor() {
       (app as any).__taskBoardPoll = taskBoardPoll;
 
       const addCharacter = async (agent: Agent) => {
-        const charName = theme.cast.byName[agent.character] ? agent.character : theme.cast.defaultCharacter;
+        const resolvedChar = (agent.isGod || agent.character === 'michael') ? 'doraemon' : agent.character;
+        const charName = theme.cast.byName[resolvedChar] ? resolvedChar : theme.cast.defaultCharacter;
         const member = theme.cast.byName[charName];
         const seatIndex = claimSeat(agent);
         const seatTile: Tile = (seatIndex != null ? seatTiles[seatIndex] : undefined)

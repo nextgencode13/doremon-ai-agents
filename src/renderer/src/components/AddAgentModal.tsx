@@ -77,6 +77,46 @@ const DESCRIPTION_TEMPLATES: { label: string; description: string; goal: string 
     label: 'Dorami · Safety Watchdog',
     description: 'subagent auditor, rate limit and token monitor',
     goal: 'Audit running agents for infinite loops or runaway spend, verify safety gates on destructive commands, and summarize hive health.'
+  },
+  {
+    label: 'Mini-Dora · Subagent Helper',
+    description: 'fast sub-tasks and micro script helper',
+    goal: 'Execute rapid subagent tasks, run isolated file edits, fetch remote data, and return compact results to parent agents.'
+  },
+  {
+    label: 'Tamako · Spend Gatekeeper',
+    description: 'token budget and resource policy enforcer',
+    goal: 'Strictly monitor token consumption across active agents, enforce cost budgets, and pause agents before they exceed configured limits.'
+  },
+  {
+    label: 'Gian’s Mom · Emergency Breaker',
+    description: 'hard circuit breaker and rogue process stopper',
+    goal: 'Detect runaway agent processes, repetitive loops, and out-of-control shell executions, immediately halting offending agents.'
+  },
+  {
+    label: 'Suneo’s Mom · Premium Model Router',
+    description: 'high-context specialist and model optimizer',
+    goal: 'Route complex reasoning and large architectural problems to top-tier reasoning models while keeping fast tasks on flash models.'
+  },
+  {
+    label: 'Jaiko · UI/UX Designer',
+    description: 'creative UI, responsive styling & markdown layouts',
+    goal: 'Craft vibrant, pixel-perfect user interfaces, refine CSS layouts and micro-animations, and format polished markdown documentation.'
+  },
+  {
+    label: 'Nobisuke · Background Worker',
+    description: 'durable worker for long-running batch jobs',
+    goal: 'Execute quiet, persistent background jobs, monitor file watchers, batch transpile assets, and manage long-running local services.'
+  },
+  {
+    label: 'Sensei · Security Linter',
+    description: 'zero-warning typecheck and vulnerability auditor',
+    goal: 'Enforce strict TypeScript compiler checks, run security audits on dependencies, and catch syntax, typing, and lint errors early.'
+  },
+  {
+    label: 'Sewashi · Scheduled Missions',
+    description: 'autonomous future planner and cron runner',
+    goal: 'Maintain the schedule of recurring background jobs, pull requests checks, nightly test suites, and repository health telemetry.'
   }
 ];
 
@@ -187,7 +227,7 @@ export function AddAgentModal({ onClose, config, onConfigChange }: AddAgentModal
   const initialProvider = inferAgentProvider(config.defaultCommand);
   const initialModel = isClaudeProvider(initialProvider) ? config.defaultModel : undefined;
 
-  const [name, setName] = useState(pendingHire?.name ?? 'Jim');
+  const [name, setName] = useState(pendingHire?.name ?? 'Nobita');
   const [character, setCharacter] = useState<OfficeCharacterName>(knownCharacter(pendingHire?.character));
   const [accent, setAccent] = useState<AccentColorName>(knownAccent(pendingHire?.accent));
   const [cwd, setCwd] = useState<string>(config.registeredRepos[0] ?? '');
@@ -677,7 +717,7 @@ export function AddAgentModal({ onClose, config, onConfigChange }: AddAgentModal
                           const match = characterForName(next);
                           if (match) setCharacter(match);
                         }}
-                        placeholder="Ada"
+                        placeholder="Nobita"
                         style={inputStyle}
                       />
                     </Row>

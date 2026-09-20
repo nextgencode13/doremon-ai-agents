@@ -183,17 +183,12 @@ export function AgentCard({
           {/* Portrait tile — vertically centred so the card reads calm and even. */}
           <div style={{
             width: 36, height: isGod ? 50 : 46, alignSelf: 'center',
-            // God's CARD is now accent-light, so the tile cannot be — it would
-            // vanish into its own background. Paper reads as an inset frame
-            // against the tint, which is what the tile is meant to look like.
             background: isGod ? 'var(--cth-paper-100)' : `var(--cth-${accent}-light)`,
             boxShadow: `inset 0 0 0 1px var(--cth-ink-${isGod ? '300' : '100'})`,
-            // Anchor the sprite's TOP: the 56px-tall portrait overflows this
-            // tile, and bottom-anchoring cropped the head — crop feet, not face.
-            display: 'flex', alignItems: 'flex-start', justifyContent: 'center', overflow: 'hidden',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden',
             flexShrink: 0
           }}>
-            <SpritePortrait character={character} scale={2} />
+            <SpritePortrait character={isGod ? 'doraemon' : character} scale={2} />
           </div>
 
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
@@ -201,7 +196,7 @@ export function AgentCard({
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'space-between', minWidth: 0 }}>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, minWidth: 0, flex: 1 }}>
                 {onRename ? (
-                  <AgentNameEditor name={name} onCommit={onRename} uppercase />
+                  <AgentNameEditor name={isGod && (name.toLowerCase() === 'michael' || name.startsWith('m.')) ? 'Doraemon' : name} onCommit={onRename} uppercase />
                 ) : (
                   <span style={{
                     fontFamily: 'var(--cth-font-display)',
@@ -210,7 +205,7 @@ export function AgentCard({
                     color: 'var(--cth-ink-900)',
                     flex: 1, minWidth: 0,
                     whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'
-                  }}>{name.toUpperCase()}</span>
+                  }}>{(isGod && (name.toLowerCase() === 'michael' || name.startsWith('m.')) ? 'Doraemon' : name).toUpperCase()}</span>
                 )}
                 {isGod && (
                   <span style={{

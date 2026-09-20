@@ -1,4 +1,4 @@
-import { app, BrowserWindow, clipboard, dialog, ipcMain, Menu, powerMonitor, powerSaveBlocker, screen, shell, Notification } from 'electron';
+import { app, BrowserWindow, clipboard, dialog, ipcMain, Menu, powerMonitor, powerSaveBlocker, screen, shell, Notification, nativeImage } from 'electron';
 import { spawn } from 'node:child_process';
 import {
   rmSync, existsSync, readFileSync, readdirSync, statSync, cpSync, writeFileSync,
@@ -2213,13 +2213,19 @@ function createWindow(opts: { floor?: boolean } = {}): BrowserWindow {
   const cascade = isFloor ? floorCascade() : null;
   const geom = cascade ?? saved;
 
+  const iconPath = app.isPackaged
+    ? join(process.resourcesPath, 'public/Doremon-character-img/doraemon.png')
+    : join(__dirname, '../../public/Doremon-character-img/doraemon.png');
+  const winIcon = existsSync(iconPath) ? nativeImage.createFromPath(iconPath) : undefined;
+
   const win = new BrowserWindow({
     width: geom?.width ?? DEFAULT_WIN.width,
     height: geom?.height ?? DEFAULT_WIN.height,
     ...(geom && geom.x !== undefined && geom.y !== undefined ? { x: geom.x, y: geom.y } : {}),
     minWidth: MIN_WIN.width,
     minHeight: MIN_WIN.height,
-    title: isFloor ? 'Munder Difflin — Floor' : 'Munder Difflin',
+    title: isFloor ? 'Doraemon AI Agents — Floor' : 'Doraemon AI Agents',
+    icon: winIcon,
     backgroundColor: '#FFF8E7',
     titleBarStyle: 'hiddenInset',
     show: false,

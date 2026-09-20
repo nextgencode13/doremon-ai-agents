@@ -27,7 +27,7 @@ import { FullscreenTerminal } from '@/components/FullscreenTerminal';
 import { TaskDetailOverlay } from '@/components/TaskDetailOverlay';
 import { IdePanel } from '@/ide/IdePanel';
 import { useHoldOptionToTalk } from '@/freeflow/holdOption';
-import brandLogo from '@brand/logo.png?url';
+import { getDoraemonImageUrl } from '@/assets/doraemon';
 
 // Injected at build time from package.json (see electron.vite.config.ts).
 declare const __APP_VERSION__: string;
@@ -84,7 +84,15 @@ export function App() {
     return () => window.removeEventListener('cth:open-settings', onOpenSettings);
   }, []);
 
-  // Initial config load
+  // Initial config load + Doraemon fleet auto-migration
+  useEffect(() => {
+    const legacyNames = ['michael', 'angela', 'kelly', 'jim', 'dwight', 'pam', 'kevin', 'stanley', 'phyllis', 'andy', 'creed', 'meredith', 'toby', 'ryan', 'oscar'];
+    const currentAgents = useStore.getState().agents;
+    if (currentAgents.some((a) => legacyNames.includes(a.character))) {
+      useStore.getState().transformToDoraemonFleet();
+    }
+  }, []);
+
   useEffect(() => {
     let cancelled = false;
     window.cth.getConfig().then(c => {
@@ -280,13 +288,33 @@ export function App() {
           userSelect: 'none'
         }}
       >
-        <img
-          src={brandLogo}
-          alt="Munder Difflin"
-          style={{ height: 20, width: 'auto', display: 'block' }}
-        />
-        {/* v0.3.7: the version is no longer inert text — it doubles as the
-            update control (check / download / restart to update). */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <img
+            src={getDoraemonImageUrl('doraemon')}
+            alt="Doraemon AI Agents"
+            style={{ height: 24, width: 24, objectFit: 'contain', display: 'block' }}
+          />
+          <span style={{
+            fontFamily: 'var(--cth-font-display)',
+            fontSize: 10,
+            color: 'var(--cth-ink-900)',
+            letterSpacing: 0.5
+          }}>
+            DORAEMON AI AGENTS
+          </span>
+          <span style={{
+            fontSize: 8,
+            fontFamily: 'var(--cth-font-mono)',
+            padding: '1px 5px',
+            background: 'var(--cth-sky-light)',
+            color: 'var(--cth-sky)',
+            boxShadow: 'inset 0 0 0 1px var(--cth-sky)',
+            borderRadius: 2,
+            textTransform: 'uppercase'
+          }}>
+            4D POCKET
+          </span>
+        </div>
         <UpdateBadge />
         <span style={{
           fontFamily: 'var(--cth-font-ui)',
@@ -295,6 +323,30 @@ export function App() {
         }}>
           {config.autoMode ? 'auto mode on' : 'auto mode off'}
         </span>
+        <button
+          className="cth-titlebar-nodrag cth-tip"
+          onClick={() => {
+            useStore.getState().transformToDoraemonFleet();
+          }}
+          data-tip="Transform all active and archived agents to the Doraemon Squad"
+          aria-label="Transform to Doraemon Fleet"
+          style={{
+            padding: '2px 8px',
+            background: 'var(--cth-sky-light)',
+            color: 'var(--cth-ink-900)',
+            boxShadow: 'inset 0 0 0 1px var(--cth-sky)',
+            border: 'none',
+            borderRadius: 2,
+            fontFamily: 'var(--cth-font-ui)',
+            fontSize: 11,
+            cursor: 'pointer',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 4
+          }}
+        >
+          <span>🔔</span> Doraemon Squad
+        </button>
         {/* v0.3.4: theme + fullscreen live HERE (top right), not buried in the
             terminal header — and the theme darkens the whole app, terminals
             included (design/theme.ts + tokens.css dark block). */}

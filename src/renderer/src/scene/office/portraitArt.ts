@@ -506,8 +506,8 @@ function drawSceneTorso(buf: Buf, r: Recipe, back: boolean): void {
 }
 
 // ─── Doraemon & Dorami Custom Robot Cat Rendering ───────────────────────────
-function drawDoraemonHead(buf: Buf, dorami = false): void {
-  const blue: RGB = dorami ? [255, 214, 0] : [28, 134, 238];
+function drawDoraemonHead(buf: Buf, dorami = false, minidora = false): void {
+  const blue: RGB = minidora ? [235, 45, 45] : dorami ? [255, 214, 0] : [28, 134, 238];
   const [bhi, bbase, bsh] = shades(blue);
   const white: RGB = [252, 252, 252];
   const red: RGB = [230, 36, 46];
@@ -554,7 +554,7 @@ function drawDoraemonHead(buf: Buf, dorami = false): void {
   }
 
   // Red Round Nose (x8-9, y8)
-  const noseCol = dorami ? ([240, 70, 100] as RGB) : red;
+  const noseCol = dorami ? ([240, 70, 100] as RGB) : minidora ? ([255, 200, 50] as RGB) : red;
   rect(buf, 8, 8, 9, 8, noseCol);
   set(buf, 8, 8, [255, 180, 180]);
 
@@ -576,7 +576,8 @@ function drawDoraemonHead(buf: Buf, dorami = false): void {
   rect(buf, 7, 14, 10, 14, red);
 
   // Red Collar (y16-17)
-  rect(buf, 4, 16, 13, 17, red);
+  const collarCol = minidora ? ([255, 220, 0] as RGB) : red;
+  rect(buf, 4, 16, 13, 17, collarCol);
 
   // Golden Bell on collar (x8-9, y17-18)
   const bellCol = dorami ? ([255, 120, 160] as RGB) : yellow;
@@ -585,8 +586,8 @@ function drawDoraemonHead(buf: Buf, dorami = false): void {
   set(buf, 8, 18, dark);
 }
 
-function drawDoraemonBody(buf: Buf, dorami = false, phase = 0, back = false): void {
-  const blue: RGB = dorami ? [255, 214, 0] : [28, 134, 238];
+function drawDoraemonBody(buf: Buf, dorami = false, phase = 0, back = false, minidora = false): void {
+  const blue: RGB = minidora ? [235, 45, 45] : dorami ? [255, 214, 0] : [28, 134, 238];
   const [, bbase, bsh] = shades(blue);
   const white: RGB = [252, 252, 252];
   const red: RGB = [230, 36, 46];
@@ -611,7 +612,7 @@ function drawDoraemonBody(buf: Buf, dorami = false, phase = 0, back = false): vo
     rect(buf, 14, 21, 16, 23, white);
   } else {
     // Back: Red round tail (x8-9, y23-24)
-    rect(buf, 8, 23, 9, 24, red);
+    rect(buf, 8, 23, 9, 24, minidora ? [255, 220, 0] : red);
     set(buf, 8, 23, [255, 150, 150]);
   }
 
@@ -623,8 +624,8 @@ function drawDoraemonBody(buf: Buf, dorami = false, phase = 0, back = false): vo
   rect(buf, 10, rightLow ? 29 : 28, 14, rightLow ? 31 : 30, white);
 }
 
-function drawDoraemonHeadBack(buf: Buf, dorami = false): void {
-  const blue: RGB = dorami ? [255, 214, 0] : [28, 134, 238];
+function drawDoraemonHeadBack(buf: Buf, dorami = false, minidora = false): void {
+  const blue: RGB = minidora ? [235, 45, 45] : dorami ? [255, 214, 0] : [28, 134, 238];
   const [bhi, bbase, bsh] = shades(blue);
   const red: RGB = [230, 36, 46];
 
@@ -644,13 +645,13 @@ function drawDoraemonHeadBack(buf: Buf, dorami = false): void {
     set(buf, 8, 1, red); set(buf, 9, 1, red);
   }
   // Collar back
-  rect(buf, 4, 16, 13, 17, red);
+  rect(buf, 4, 16, 13, 17, minidora ? [255, 220, 0] : red);
 }
 
-function composeDoraemon(dorami = false): Buf {
+function composeDoraemon(dorami = false, minidora = false): Buf {
   CUR_W = PORTRAIT_W; CUR_H = PORTRAIT_H;
   const buf = new Uint8ClampedArray(PORTRAIT_W * PORTRAIT_H * 4);
-  const blue: RGB = dorami ? [255, 214, 0] : [28, 134, 238];
+  const blue: RGB = minidora ? [235, 45, 45] : dorami ? [255, 214, 0] : [28, 134, 238];
   const white: RGB = [252, 252, 252];
   const dark: RGB = [30, 26, 36];
   // Bust body
@@ -661,17 +662,17 @@ function composeDoraemon(dorami = false): Buf {
   for (let x = 6; x <= 11; x++) set(buf, x, 25, dark);
   set(buf, 5, 22, dark); set(buf, 5, 23, dark); set(buf, 5, 24, dark);
   set(buf, 12, 22, dark); set(buf, 12, 23, dark); set(buf, 12, 24, dark);
-  drawDoraemonHead(buf, dorami);
+  drawDoraemonHead(buf, dorami, minidora);
   outlinePass(buf);
   return buf;
 }
 
-function composeDoraemonScene(dorami = false, phase = 0, back = false): Buf {
+function composeDoraemonScene(dorami = false, phase = 0, back = false, minidora = false): Buf {
   CUR_W = SCENE_W; CUR_H = SCENE_H;
   const buf = new Uint8ClampedArray(SCENE_W * SCENE_H * 4);
-  drawDoraemonBody(buf, dorami, phase, back);
-  if (back) drawDoraemonHeadBack(buf, dorami);
-  else drawDoraemonHead(buf, dorami);
+  drawDoraemonBody(buf, dorami, phase, back, minidora);
+  if (back) drawDoraemonHeadBack(buf, dorami, minidora);
+  else drawDoraemonHead(buf, dorami, minidora);
   outlinePass(buf);
   return buf;
 }
@@ -778,6 +779,11 @@ const RECIPES: Record<OfficeCharacterName, Recipe> = {
   jaiko:    { skin: 'tan',   hairc: [45, 30, 25],   hair: 'styleBeret',    cloth: 'dress', c1: [230, 120, 40], pants: [180, 50, 50], brow: 'soft', mouth: 'smile', heavy: true },
   sensei:   { skin: 'tan',   hairc: [35, 35, 40],   hair: 'styleShort',    hairargs: { part: 'R' }, cloth: 'suit', c1: [85, 90, 100], tie: [130, 60, 45], glasses: true, brow: 'angry', mouth: 'neutral' },
   sewashi:  { skin: 'light', hairc: [85, 90, 115],  hair: 'styleSpiky',    cloth: 'futuristic', c1: [140, 70, 185], c2: [0, 235, 255], pants: [50, 45, 70], brow: 'flat', mouth: 'smile' },
+  minidora: { skin: 'light', hairc: [235, 45, 45],  hair: 'styleShort',    cloth: 'suit', c1: [235, 45, 45] }, // Handled by custom composeDoraemon(false, true)
+  tamako:   { skin: 'light', hairc: [35, 30, 30],   hair: 'styleShort',    hairargs: { part: 'L' }, cloth: 'cardigan', c1: [230, 100, 30], c2: [255, 255, 245], pants: [70, 60, 60], glasses: true, brow: 'angry', mouth: 'frown' },
+  nobisuke: { skin: 'light', hairc: [45, 45, 50],   hair: 'styleShort',    hairargs: { part: 'R', recede: 1 }, cloth: 'suit', c1: [52, 73, 94], tie: [192, 57, 43], pants: [44, 62, 80], brow: 'soft', mouth: 'smile' },
+  gianmom:  { skin: 'tan',   hairc: [30, 25, 20],   hair: 'styleBun',      cloth: 'cardigan', c1: [150, 45, 35], c2: [255, 250, 240], pants: [80, 70, 70], brow: 'angry', mouth: 'frown', heavy: true },
+  suneomom: { skin: 'light', hairc: [35, 30, 35],   hair: 'styleCurly',    cloth: 'dress', c1: [142, 68, 173], pants: [90, 50, 110], glasses: true, brow: 'raised', mouth: 'smile', blush: true, lashes: true },
   // ─── The Office & Floor Management ────────────────────────────────────────
   michael:  { skin: 'light', hairc: [58, 42, 28],   hair: 'styleShort',  hairargs: { part: 'L' }, cloth: 'suit', c1: [58, 63, 74], tie: [170, 58, 58], brow: 'flat', mouth: 'smile' },
   jim:      { skin: 'light', hairc: [92, 60, 34],   hair: 'styleFloppy', cloth: 'dressshirt', c1: [172, 196, 224], tie: [120, 130, 150], brow: 'flat', mouth: 'smile' },
@@ -839,12 +845,14 @@ function composeScene(r: Recipe, phase: number, back: boolean): Buf {
 const bufCache = new Map<OfficeCharacterName, Buf>();
 const sceneCache = new Map<OfficeCharacterName, SceneFrames>();
 
-function getBuf(name: OfficeCharacterName): Buf {
+function getBuf(rawName: OfficeCharacterName): Buf {
+  const name = (rawName === 'michael' || !rawName) ? 'doraemon' : rawName;
   let buf = bufCache.get(name);
   if (!buf) {
-    if (name === 'doraemon') buf = composeDoraemon(false);
-    else if (name === 'dorami') buf = composeDoraemon(true);
-    else buf = compose(RECIPES[name] ?? RECIPES.nobita ?? RECIPES.jim);
+    if (name === 'doraemon') buf = composeDoraemon(false, false);
+    else if (name === 'dorami') buf = composeDoraemon(true, false);
+    else if (name === 'minidora') buf = composeDoraemon(false, true);
+    else buf = compose(RECIPES[name] ?? RECIPES.nobita ?? RECIPES.doraemon);
     bufCache.set(name, buf);
   }
   return buf;
@@ -853,21 +861,27 @@ function getBuf(name: OfficeCharacterName): Buf {
 export interface SceneFrames { front: Buf[]; back: Buf[]; }
 
 /** Walk-phase frames (stand, step-L, step-R) for the in-scene sprite, front + back. */
-export function sceneFrameBufs(name: OfficeCharacterName): SceneFrames {
+export function sceneFrameBufs(rawName: OfficeCharacterName): SceneFrames {
+  const name = (rawName === 'michael' || !rawName) ? 'doraemon' : rawName;
   let frames = sceneCache.get(name);
   if (!frames) {
     if (name === 'doraemon') {
       frames = {
-        front: [composeDoraemonScene(false, 0, false), composeDoraemonScene(false, 1, false), composeDoraemonScene(false, 2, false)],
-        back: [composeDoraemonScene(false, 0, true), composeDoraemonScene(false, 1, true), composeDoraemonScene(false, 2, true)],
+        front: [composeDoraemonScene(false, 0, false, false), composeDoraemonScene(false, 1, false, false), composeDoraemonScene(false, 2, false, false)],
+        back: [composeDoraemonScene(false, 0, true, false), composeDoraemonScene(false, 1, true, false), composeDoraemonScene(false, 2, true, false)],
       };
     } else if (name === 'dorami') {
       frames = {
-        front: [composeDoraemonScene(true, 0, false), composeDoraemonScene(true, 1, false), composeDoraemonScene(true, 2, false)],
-        back: [composeDoraemonScene(true, 0, true), composeDoraemonScene(true, 1, true), composeDoraemonScene(true, 2, true)],
+        front: [composeDoraemonScene(true, 0, false, false), composeDoraemonScene(true, 1, false, false), composeDoraemonScene(true, 2, false, false)],
+        back: [composeDoraemonScene(true, 0, true, false), composeDoraemonScene(true, 1, true, false), composeDoraemonScene(true, 2, true, false)],
+      };
+    } else if (name === 'minidora') {
+      frames = {
+        front: [composeDoraemonScene(false, 0, false, true), composeDoraemonScene(false, 1, false, true), composeDoraemonScene(false, 2, false, true)],
+        back: [composeDoraemonScene(false, 0, true, true), composeDoraemonScene(false, 1, true, true), composeDoraemonScene(false, 2, true, true)],
       };
     } else {
-      const r = RECIPES[name] ?? RECIPES.nobita ?? RECIPES.jim;
+      const r = RECIPES[name] ?? RECIPES.nobita ?? RECIPES.doraemon;
       frames = {
         front: [composeScene(r, 0, false), composeScene(r, 1, false), composeScene(r, 2, false)],
         back: [composeScene(r, 0, true), composeScene(r, 1, true), composeScene(r, 2, true)],

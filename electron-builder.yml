@@ -1,6 +1,6 @@
-appId: in.munderdiffl.app
-productName: Munder Difflin
-copyright: Copyright © 2026 Chaitanya Giri
+appId: in.doraemon.agents
+productName: Doraemon AI Agents
+copyright: Copyright © 2026 Doraemon AI Agents
 
 # Where electron-updater looks for new versions (latest*.yml + assets on GitHub
 # releases). The release workflow still uploads assets itself (--publish never);

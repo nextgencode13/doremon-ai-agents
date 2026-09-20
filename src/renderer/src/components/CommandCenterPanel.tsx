@@ -180,7 +180,7 @@ export function CommandCenterPanel({ agent, fullscreen = false }: { agent: Agent
             <span style={{
               fontSize: 12, color: 'var(--cth-ink-500)',
               whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'
-            }}>Michael runs the floor · Doraemon oversees</span>
+            }}>Doraemon 4D Command Center · Floor Lead: Nobita</span>
           </div>
         </div>
         {/* v0.3.4: floor-wide auto-delivery lives HERE (one switch for every
@@ -559,7 +559,7 @@ function FloorTab({ seed }: { seed: { text: string; seq: number } }) {
     );
     setDispatchText('');
     setDispatchMsg(res.ok
-      ? `sent to Michael${suggested ? ` (suggesting ${suggested.name})` : ''}`
+      ? `sent to Doraemon${suggested ? ` (suggesting ${suggested.name})` : ''}`
       : `failed: ${res.error ?? '?'}`);
     setTimeout(() => setDispatchMsg(null), 4000);
   };
@@ -630,13 +630,13 @@ function FloorTab({ seed }: { seed: { text: string; seq: number } }) {
 
   return (
     <Scroll>
-      <Section title="DISPATCH — VIA MICHAEL">
+      <Section title="DISPATCH — VIA DORAEMON">
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
           <span style={{ fontFamily: 'var(--cth-font-display)', fontSize: 8, color: 'var(--cth-ink-500)', flexShrink: 0 }}>
             SUGGESTED OWNER
           </span>
           <Select value={dispatchTo} onChange={setDispatchTo}>
-            <option value="">Michael decides</option>
+            <option value="">Doraemon decides</option>
             {agents.filter((a) => !a.isGod).map((a) => (
               <option key={a.id} value={a.id}>{a.name}</option>
             ))}
@@ -646,7 +646,7 @@ function FloorTab({ seed }: { seed: { text: string; seq: number } }) {
           value={dispatchText}
           onChange={(e) => setDispatchText(e.target.value)}
           rows={2}
-          placeholder="Describe the task… (Michael decomposes, writes the card, and assigns)"
+          placeholder="Describe the task… (Doraemon decomposes, writes the card, and assigns to the squad)"
           style={textareaStyle}
         />
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 6 }}>
@@ -1128,7 +1128,7 @@ function MemoryTab({ godId, who: controlledWho, onWho }: { godId: string; who?: 
         <Select value={who} onChange={setWho}>
           {agents.map((a) => (<option key={a.id} value={a.id}>{a.name}</option>))}
         </Select>
-        <Pre>{mem || 'No memory recorded yet.'}</Pre>
+        <Pre>{(mem ? mem.replace(/^# Memory — Michael[^\n]*/, '# Memory — Doraemon (god)') : '') || 'No memory recorded yet.'}</Pre>
       </Section>
     </Scroll>
   );

@@ -11,7 +11,8 @@ import { paintPortrait, sceneFrameBufs, SCENE_W, SCENE_H } from './portraitArt';
 
 export type OfficeCharacterName =
   | 'doraemon' | 'nobita' | 'shizuka' | 'gian' | 'suneo' | 'dorami'
-  | 'dekisugi' | 'jaiko' | 'sensei' | 'sewashi'
+  | 'dekisugi' | 'jaiko' | 'sensei' | 'sewashi' | 'minidora'
+  | 'tamako' | 'nobisuke' | 'gianmom' | 'suneomom'
   | 'michael' | 'jim' | 'pam' | 'dwight' | 'kevin' | 'angela'
   | 'oscar' | 'stanley' | 'phyllis' | 'andy' | 'kelly' | 'ryan'
   | 'toby' | 'creed' | 'meredith';
@@ -28,16 +29,21 @@ export interface CastMember {
 /** Selectable roster, in display order. */
 export const OFFICE_CAST: CastMember[] = [
   // ─── Doraemon Universe (Primary Fleet) ───────────────────────────────────
-  { name: 'doraemon',  displayName: 'Doraemon',  shirt: '#1e90ff', blurb: 'Command Center & 4D Gadget Master' },
-  { name: 'nobita',    displayName: 'Nobita',    shirt: '#f4d03f', blurb: 'Rapid Prototyper, Gadget Operator' },
-  { name: 'shizuka',   displayName: 'Shizuka',   shirt: '#ff69b4', blurb: 'Code Quality, Docs & QA Review' },
-  { name: 'gian',      displayName: 'Gian',      shirt: '#e67e22', blurb: 'Heavy Refactors & Build Engineer' },
-  { name: 'suneo',     displayName: 'Suneo',     shirt: '#2980b9', blurb: 'Integrations, APIs & Webhooks' },
-  { name: 'dorami',    displayName: 'Dorami',    shirt: '#f1c40f', blurb: 'Subagent Auditor & Safety Watchdog' },
-  { name: 'dekisugi',  displayName: 'Dekisugi',  shirt: '#27ae60', blurb: 'Chief Architect & Algorithms' },
-  { name: 'jaiko',     displayName: 'Jaiko',     shirt: '#c0392b', blurb: 'UI/UX & Markdown Designer' },
-  { name: 'sensei',    displayName: 'Sensei',    shirt: '#7f8c8d', blurb: 'Strict Linter & Security Auditor' },
-  { name: 'sewashi',   displayName: 'Sewashi',   shirt: '#9b59b6', blurb: 'Roadmaps & Scheduled Missions' },
+  { name: 'doraemon',  displayName: 'Doraemon',    shirt: '#1e90ff', blurb: 'Command Center & 4D Gadget Master' },
+  { name: 'nobita',    displayName: 'Nobita',      shirt: '#f4d03f', blurb: 'Rapid Prototyper, Gadget Operator' },
+  { name: 'shizuka',   displayName: 'Shizuka',     shirt: '#ff69b4', blurb: 'Code Quality, Docs & QA Review' },
+  { name: 'gian',      displayName: 'Gian',        shirt: '#e67e22', blurb: 'Heavy Refactors & Build Engineer' },
+  { name: 'suneo',     displayName: 'Suneo',       shirt: '#2980b9', blurb: 'Integrations, APIs & Webhooks' },
+  { name: 'dorami',    displayName: 'Dorami',      shirt: '#f1c40f', blurb: 'Subagent Auditor & Safety Watchdog' },
+  { name: 'dekisugi',  displayName: 'Dekisugi',    shirt: '#27ae60', blurb: 'Chief Architect & Algorithms' },
+  { name: 'jaiko',     displayName: 'Jaiko',       shirt: '#c0392b', blurb: 'UI/UX & Markdown Designer' },
+  { name: 'sensei',    displayName: 'Sensei',      shirt: '#7f8c8d', blurb: 'Strict Linter & Security Auditor' },
+  { name: 'sewashi',   displayName: 'Sewashi',     shirt: '#9b59b6', blurb: 'Roadmaps & Scheduled Missions' },
+  { name: 'minidora',  displayName: 'Mini-Dora',   shirt: '#e74c3c', blurb: 'Subagent Helper & Quick Tools' },
+  { name: 'tamako',    displayName: 'Tamako Nobi', shirt: '#d35400', blurb: 'Spend Gatekeeper & Token Limits' },
+  { name: 'nobisuke',  displayName: 'Nobisuke',    shirt: '#34495e', blurb: 'Long-running Background Worker' },
+  { name: 'gianmom',   displayName: 'Gian’s Mom',  shirt: '#962d22', blurb: 'Hard Circuit Breaker & Emergency Stop' },
+  { name: 'suneomom',  displayName: 'Suneo’s Mom', shirt: '#8e44ad', blurb: 'Premium Model Router & Context Ops' },
   // ─── The Office & Floor Management ───────────────────────────────────────
   { name: 'michael',  displayName: 'Michael',  shirt: '#5a6b8c', blurb: "Floor Boss & Orchestrator" },
   { name: 'jim',      displayName: 'Jim',      shirt: '#6fa8dc', blurb: 'Salesman, prankster' },
@@ -80,6 +86,30 @@ function bufToTexture(buf: Uint8ClampedArray): Texture {
   return tex;
 }
 
+const DORAEMON_NAME_MAP: Record<string, OfficeCharacterName> = {
+  michael:  'doraemon',
+  angela:   'shizuka',
+  kelly:    'nobita',
+  jim:      'suneo',
+  dwight:   'gian',
+  pam:      'dorami',
+  kevin:    'dekisugi',
+  stanley:  'sensei',
+  oscar:    'sewashi',
+  creed:    'jaiko',
+  meredith: 'tamako',
+  toby:     'gianmom',
+  ryan:     'minidora',
+  andy:     'suneomom',
+  phyllis:  'nobisuke',
+};
+
+export function resolveDoraemonCharacter(name?: string): OfficeCharacterName {
+  if (!name) return 'doraemon';
+  const lower = name.toLowerCase();
+  return DORAEMON_NAME_MAP[lower] ?? (lower as OfficeCharacterName);
+}
+
 /**
  * Frame grid CharacterSprite expects: 3 rows (down, up, right) × 7 frames
  * [walk1, walk2, walk3, type1, type2, read1, read2]. We provide a front view
@@ -87,7 +117,8 @@ function bufToTexture(buf: Uint8ClampedArray): Texture {
  * and a back view (up — agents seated facing their desk show their back). The
  * three walk frames are stand / step-left / step-right.
  */
-export async function getCastFrames(name: OfficeCharacterName): Promise<Texture[][]> {
+export async function getCastFrames(rawName: OfficeCharacterName): Promise<Texture[][]> {
+  const name = resolveDoraemonCharacter(rawName);
   const cached = frameCache.get(name);
   if (cached) return cached;
   const { front, back } = sceneFrameBufs(name);
@@ -107,8 +138,9 @@ export async function getCastFrames(name: OfficeCharacterName): Promise<Texture[
  */
 export async function paintCastPortrait(
   ctx: CanvasRenderingContext2D,
-  name: OfficeCharacterName,
+  rawName: OfficeCharacterName,
   scale = 2,
 ): Promise<void> {
+  const name = resolveDoraemonCharacter(rawName);
   paintPortrait(ctx, name, scale);
 }

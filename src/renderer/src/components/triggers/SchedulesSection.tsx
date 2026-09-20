@@ -100,7 +100,7 @@ export function SchedulesSection({ onSummary }: { onSummary?: (s: string) => voi
   const whenIsUsable = !mWeekly || weeklyIsUsable(mWeekly);
 
   const targetName = (to: string) =>
-    to === 'broadcast' ? 'everyone' : to === 'god' ? 'Michael' : agents.find((a) => a.id === to)?.name ?? to;
+    to === 'broadcast' ? 'everyone' : to === 'god' ? 'Doraemon' : agents.find((a) => a.id === to)?.name ?? to;
 
   return (
     <>

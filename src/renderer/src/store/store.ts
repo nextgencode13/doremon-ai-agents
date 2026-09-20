@@ -248,6 +248,8 @@ interface State {
    *  unmounts the ask-me view) doesn't eat a half-typed answer. */
   answerDrafts: Record<string, string>;
   setAnswerDraft: (taskId: string, text: string) => void;
+  /** Transform active, archived, and restorable agents to the Doraemon squad. */
+  transformToDoraemonFleet: () => void;
   /** Unsent composer drafts, per agent — so switching agents (which remounts the
    *  composer) doesn't eat what the user was typing. */
   drafts: Record<string, string>;
@@ -465,12 +467,46 @@ function persistedSlice(
   }
 }
 
+export const DORAEMON_LEGACY_MAP: Record<string, { character: OfficeCharacterName; name: string; accent: AccentColorName }> = {
+  michael:  { character: 'doraemon', name: 'Doraemon',    accent: 'sky' },
+  angela:   { character: 'shizuka',  name: 'Shizuka',     accent: 'lilac' },
+  kelly:    { character: 'nobita',   name: 'Nobita',      accent: 'lemon' },
+  jim:      { character: 'suneo',    name: 'Suneo',       accent: 'sky' },
+  dwight:   { character: 'gian',     name: 'Gian',        accent: 'coral' },
+  pam:      { character: 'dorami',   name: 'Dorami',      accent: 'lemon' },
+  kevin:    { character: 'dekisugi', name: 'Dekisugi',    accent: 'mint' },
+  stanley:  { character: 'sensei',   name: 'Sensei',      accent: 'lilac' },
+  oscar:    { character: 'sewashi',  name: 'Sewashi',     accent: 'lilac' },
+  creed:    { character: 'jaiko',    name: 'Jaiko',       accent: 'coral' },
+  meredith: { character: 'tamako',   name: 'Tamako Nobi', accent: 'lemon' },
+  toby:     { character: 'gianmom',  name: 'Gian’s Mom',  accent: 'coral' },
+  ryan:     { character: 'minidora', name: 'Mini-Dora',   accent: 'coral' },
+  andy:     { character: 'suneomom', name: 'Suneo’s Mom', accent: 'lilac' },
+  phyllis:  { character: 'nobisuke', name: 'Nobisuke',    accent: 'sky' },
+};
+
+export function migrateAgentToDoraemon<T extends { character?: string; name?: string; accent?: AccentColorName; isGod?: boolean }>(a: T): T {
+  if (!a) return a;
+  const charKey = (a.character || '').toLowerCase();
+  const legacy = DORAEMON_LEGACY_MAP[charKey];
+  if (legacy) {
+    const isNamedAfterOld = !a.name || a.name.toLowerCase() === charKey || (a.isGod && a.name.toLowerCase() === 'michael');
+    return {
+      ...a,
+      character: legacy.character,
+      name: isNamedAfterOld ? legacy.name : a.name,
+      accent: legacy.accent ?? a.accent,
+    };
+  }
+  return a;
+}
+
 function loadPersistedAgents(): Agent[] {
   try {
     const parsed = persistedSlice(LS_AGENTS, fileRoster?.agents);
     if (!parsed.length) return [];
-    // Reset volatile run-state; the PTY stream / mock loop will repopulate it.
-    return parsed.map((a) => ({
+    // Reset volatile run-state and auto-migrate legacy characters to Doraemon fleet.
+    return parsed.map((a) => migrateAgentToDoraemon({
       ...a,
       progress: 0,
       status: 'idle',
@@ -498,7 +534,7 @@ function loadPersistedArchived(): Agent[] {
     const parsed = persistedSlice(LS_ARCHIVED, fileRoster?.archived);
     if (!parsed.length) return [];
     // Archived agents have no live process — force the flag + clear run-state.
-    return parsed.map((a) => ({
+    return parsed.map((a) => migrateAgentToDoraemon({
       ...a,
       archived: true,
       status: 'idle',
@@ -531,7 +567,7 @@ function loadPersistedRestorable(): Agent[] {
     const parsed = persistedSlice(LS_RESTORABLE, fileRoster?.restorable);
     if (!parsed.length) return [];
     // No live process — clear run-state; the spawn recipe fields are what matter.
-    return parsed.map((a) => ({
+    return parsed.map((a) => migrateAgentToDoraemon({
       ...a,
       status: 'idle',
       carrying: undefined,
@@ -952,6 +988,16 @@ export const useStore = create<State>((set, get) => ({
       persistAgents(agents, selectedId);
       persistRestorable(restorableAgents);
       return { agents, feeds, selectedId, restorableAgents, fullscreenAgentId };
+    }),
+  transformToDoraemonFleet: () =>
+    set((s) => {
+      const agents = s.agents.map((a) => migrateAgentToDoraemon(a));
+      const archivedAgents = s.archivedAgents.map((a) => migrateAgentToDoraemon(a));
+      const restorableAgents = s.restorableAgents.map((a) => migrateAgentToDoraemon(a));
+      persistAgents(agents, s.selectedId);
+      persistArchived(archivedAgents);
+      persistRestorable(restorableAgents);
+      return { agents, archivedAgents, restorableAgents };
     }),
   setAddAgentOpen: (open) => set({ addAgentOpen: open }),
   hireQueue: EMPTY_HIRE_QUEUE,
