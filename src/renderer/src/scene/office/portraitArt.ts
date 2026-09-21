@@ -513,18 +513,26 @@ function drawDoraemonHead(buf: Buf, dorami = false, minidora = false): void {
   const red: RGB = [230, 36, 46];
   const yellow: RGB = [255, 215, 0];
   const dark: RGB = [30, 26, 36];
+  const pink: RGB = [255, 125, 145];
 
-  // Head sphere (rows 2-16, cols 3-14)
-  for (let y = 2; y <= 16; y++) {
-    for (let x = 3; x <= 14; x++) {
-      if ((x === 3 || x === 14) && (y === 2 || y === 3 || y === 16)) continue;
-      if ((x === 4 || x === 13) && y === 2) continue;
-      set(buf, x, y, bbase);
-    }
+  // Head sphere (smooth round earless dome: rows 2-15, cols 2-15)
+  // Row 2: top crown (x = 6..11)
+  for (let x = 6; x <= 11; x++) set(buf, x, 2, bbase);
+  // Row 3: x = 4..13
+  for (let x = 4; x <= 13; x++) set(buf, x, 3, bbase);
+  // Row 4: x = 3..14
+  for (let x = 3; x <= 14; x++) set(buf, x, 4, bbase);
+  // Rows 5..14: x = 2..15 (chubby round cheeks)
+  for (let y = 5; y <= 14; y++) {
+    for (let x = 2; x <= 15; x++) set(buf, x, y, bbase);
   }
-  // Head sheen
-  for (const x of [7, 8, 9]) set(buf, x, 2, bhi);
-  for (let y = 4; y <= 14; y++) { set(buf, 14, y, bsh); set(buf, 13, y, bsh); }
+  // Row 15: chin base x = 3..14
+  for (let x = 3; x <= 14; x++) set(buf, x, 15, bbase);
+
+  // Top highlight sheen (row 2-3)
+  for (const x of [7, 8, 9, 10]) { set(buf, x, 2, bhi); set(buf, x, 3, bhi); }
+  // Right side shadow
+  for (let y = 4; y <= 14; y++) set(buf, 15, y, bsh);
 
   // Dorami Ear Ribbon
   if (dorami) {
@@ -533,54 +541,80 @@ function drawDoraemonHead(buf: Buf, dorami = false, minidora = false): void {
     set(buf, 8, 1, red); set(buf, 9, 1, red);
   }
 
-  // White face oval (rows 6-15, cols 4-13)
-  for (let y = 6; y <= 15; y++) {
-    for (let x = 4; x <= 13; x++) {
-      if ((x === 4 || x === 13) && (y === 6 || y === 15)) continue;
+  // White Face (Round inner mask: cols 3..14, rows 5..15)
+  for (let y = 5; y <= 15; y++) {
+    for (let x = 3; x <= 14; x++) {
+      if ((x === 3 || x === 14) && (y <= 6 || y === 15)) continue;
+      if ((x <= 4 || x >= 13) && y === 5) continue;
       set(buf, x, y, white);
     }
   }
 
-  // Big cartoon eyes (rows 4-7)
+  // Big Anime Eyes (touching in center, large expressive pupils)
+  // Left eye: cols 5..8, rows 4..7
   rect(buf, 5, 4, 8, 7, white);
+  // Right eye: cols 9..12, rows 4..7
   rect(buf, 9, 4, 12, 7, white);
-  for (let x = 5; x <= 8; x++) { set(buf, x, 4, dark); set(buf, x, 7, dark); }
-  for (let x = 9; x <= 12; x++) { set(buf, x, 4, dark); set(buf, x, 7, dark); }
-  for (let y = 4; y <= 7; y++) { set(buf, 5, y, dark); set(buf, 8, y, dark); set(buf, 9, y, dark); set(buf, 12, y, dark); }
-  set(buf, 7, 5, dark); set(buf, 7, 6, dark); set(buf, 6, 5, white);
-  set(buf, 10, 5, dark); set(buf, 10, 6, dark); set(buf, 11, 5, white);
+
+  // Outer eye boundary
+  for (const x of [6, 7]) set(buf, x, 3, dark);
+  for (const x of [10, 11]) set(buf, x, 3, dark);
+  for (let y = 4; y <= 6; y++) { set(buf, 4, y, dark); set(buf, 13, y, dark); }
+  // Center divider line between eyes
+  for (let y = 4; y <= 6; y++) { set(buf, 8, y, [50, 45, 60]); set(buf, 9, y, [50, 45, 60]); }
+
+  // Expressive black cartoon pupils with glint
+  // Left pupil: x=6..7, y=5..6
+  set(buf, 6, 5, dark); set(buf, 7, 5, dark);
+  set(buf, 6, 6, dark); set(buf, 7, 6, dark);
+  set(buf, 6, 5, [255, 255, 255]); // top-left glint
+
+  // Right pupil: x=10..11, y=5..6
+  set(buf, 10, 5, dark); set(buf, 11, 5, dark);
+  set(buf, 10, 6, dark); set(buf, 11, 6, dark);
+  set(buf, 10, 5, [255, 255, 255]); // top-left glint
+
   if (dorami) {
-    set(buf, 4, 4, dark); set(buf, 13, 4, dark);
+    // Eyelashes for Dorami
+    set(buf, 3, 4, dark); set(buf, 14, 4, dark);
   }
 
-  // Red Round Nose (x8-9, y8)
-  const noseCol = dorami ? ([240, 70, 100] as RGB) : minidora ? ([255, 200, 50] as RGB) : red;
-  rect(buf, 8, 8, 9, 8, noseCol);
-  set(buf, 8, 8, [255, 180, 180]);
+  // Red Round Nose
+  const noseCol: RGB = dorami ? [240, 70, 100] : minidora ? [255, 200, 50] : red;
+  rect(buf, 8, 7, 9, 8, noseCol);
+  set(buf, 8, 7, [255, 200, 200]); // shine dot
 
-  // Whiskers (3 on each side)
-  set(buf, 4, 10, dark); set(buf, 5, 10, dark); set(buf, 6, 10, dark);
-  set(buf, 4, 11, dark); set(buf, 5, 11, dark); set(buf, 6, 11, dark);
-  set(buf, 4, 13, dark); set(buf, 5, 12, dark); set(buf, 6, 12, dark);
-  set(buf, 11, 10, dark); set(buf, 12, 10, dark); set(buf, 13, 10, dark);
-  set(buf, 11, 11, dark); set(buf, 12, 11, dark); set(buf, 13, 11, dark);
-  set(buf, 11, 12, dark); set(buf, 12, 12, dark); set(buf, 13, 13, dark);
+  // Whiskers (3 clean horizontal lines on each cheek, 2-3px long)
+  // Left:
+  set(buf, 2, 9, dark);  set(buf, 3, 9, dark);  set(buf, 4, 9, dark);
+  set(buf, 2, 11, dark); set(buf, 3, 11, dark); set(buf, 4, 11, dark);
+  set(buf, 2, 13, dark); set(buf, 3, 13, dark); set(buf, 4, 13, dark);
 
-  // Vertical nose line
-  set(buf, 8, 9, dark); set(buf, 9, 9, dark);
+  // Right:
+  set(buf, 13, 9, dark);  set(buf, 14, 9, dark);  set(buf, 15, 9, dark);
+  set(buf, 13, 11, dark); set(buf, 14, 11, dark); set(buf, 15, 11, dark);
+  set(buf, 13, 13, dark); set(buf, 14, 13, dark); set(buf, 15, 13, dark);
+
+  // Vertical nose seam down to mouth
+  set(buf, 8, 9, dark);  set(buf, 9, 9, dark);
   set(buf, 8, 10, dark); set(buf, 9, 10, dark);
 
-  // Big Happy Smile
-  for (let x = 6; x <= 11; x++) set(buf, x, 13, dark);
+  // Big Joyful Open Laughing Mouth with Pink Tongue
+  set(buf, 5, 11, dark); set(buf, 12, 11, dark); // corners
+  for (let x = 6; x <= 11; x++) set(buf, x, 11, dark); // top smile crease
+  rect(buf, 6, 12, 11, 13, [190, 25, 35]); // deep red mouth cavity
+  rect(buf, 7, 13, 10, 14, pink);           // big pink tongue
   set(buf, 5, 12, dark); set(buf, 12, 12, dark);
-  rect(buf, 7, 14, 10, 14, red);
+  set(buf, 6, 13, dark); set(buf, 11, 13, dark);
+  set(buf, 7, 14, dark); set(buf, 10, 14, dark);
+  set(buf, 8, 15, dark); set(buf, 9, 15, dark);
 
-  // Red Collar (y16-17)
-  const collarCol = minidora ? ([255, 220, 0] as RGB) : red;
-  rect(buf, 4, 16, 13, 17, collarCol);
+  // Red Collar (y16)
+  const collarCol: RGB = minidora ? [255, 220, 0] : red;
+  rect(buf, 4, 16, 13, 16, collarCol);
 
   // Golden Bell on collar (x8-9, y17-18)
-  const bellCol = dorami ? ([255, 120, 160] as RGB) : yellow;
+  const bellCol: RGB = dorami ? [255, 120, 160] : yellow;
   rect(buf, 8, 17, 9, 18, bellCol);
   set(buf, 8, 17, [255, 255, 200]);
   set(buf, 8, 18, dark);
@@ -593,23 +627,23 @@ function drawDoraemonBody(buf: Buf, dorami = false, phase = 0, back = false, min
   const red: RGB = [230, 36, 46];
   const dark: RGB = [30, 26, 36];
 
-  // Torso (rows 18-25)
-  rect(buf, 3, 18, 14, 25, bbase);
-  for (let y = 18; y <= 25; y++) { set(buf, 14, y, bsh); set(buf, 13, y, bsh); }
+  // Torso (rows 17-25)
+  rect(buf, 3, 17, 14, 25, bbase);
+  for (let y = 17; y <= 25; y++) { set(buf, 14, y, bsh); set(buf, 13, y, bsh); }
 
   if (!back) {
-    // White tummy belly (rows 19-24, cols 5-12)
-    rect(buf, 5, 19, 12, 24, white);
-    set(buf, 5, 19, bbase); set(buf, 12, 19, bbase);
+    // White tummy belly (rows 18-24, cols 5-12)
+    rect(buf, 5, 18, 12, 24, white);
+    set(buf, 5, 18, bbase); set(buf, 12, 18, bbase);
     // 4D Pocket half-moon arch
-    for (let x = 6; x <= 11; x++) set(buf, x, 21, dark);
-    for (let x = 6; x <= 11; x++) set(buf, x, 24, dark);
-    set(buf, 5, 22, dark); set(buf, 5, 23, dark);
-    set(buf, 12, 22, dark); set(buf, 12, 23, dark);
+    for (let x = 6; x <= 11; x++) set(buf, x, 20, dark);
+    for (let x = 6; x <= 11; x++) set(buf, x, 23, dark);
+    set(buf, 5, 21, dark); set(buf, 5, 22, dark);
+    set(buf, 12, 21, dark); set(buf, 12, 22, dark);
 
-    // Round white hands / paws at sides (y21-23, cols 1-2 and 15-16)
-    rect(buf, 1, 21, 3, 23, white);
-    rect(buf, 14, 21, 16, 23, white);
+    // Round white hands / paws at sides (y20-22, cols 1-3 and 14-16)
+    rect(buf, 1, 20, 3, 22, white);
+    rect(buf, 14, 20, 16, 22, white);
   } else {
     // Back: Red round tail (x8-9, y23-24)
     rect(buf, 8, 23, 9, 24, minidora ? [255, 220, 0] : red);
@@ -629,15 +663,19 @@ function drawDoraemonHeadBack(buf: Buf, dorami = false, minidora = false): void 
   const [bhi, bbase, bsh] = shades(blue);
   const red: RGB = [230, 36, 46];
 
-  for (let y = 2; y <= 16; y++) {
-    for (let x = 3; x <= 14; x++) {
-      if ((x === 3 || x === 14) && (y === 2 || y === 3 || y === 16)) continue;
-      if ((x === 4 || x === 13) && y === 2) continue;
-      set(buf, x, y, bbase);
-    }
+  // Head sphere (round earless dome: rows 2-15, cols 2-15)
+  for (let x = 6; x <= 11; x++) set(buf, x, 2, bbase);
+  for (let x = 4; x <= 13; x++) set(buf, x, 3, bbase);
+  for (let x = 3; x <= 14; x++) set(buf, x, 4, bbase);
+  for (let y = 5; y <= 14; y++) {
+    for (let x = 2; x <= 15; x++) set(buf, x, y, bbase);
   }
-  for (const x of [7, 8, 9]) set(buf, x, 2, bhi);
-  for (let y = 4; y <= 14; y++) { set(buf, 14, y, bsh); set(buf, 13, y, bsh); }
+  for (let x = 3; x <= 14; x++) set(buf, x, 15, bbase);
+
+  // Top highlight sheen (row 2-3)
+  for (const x of [7, 8, 9, 10]) { set(buf, x, 2, bhi); set(buf, x, 3, bhi); }
+  // Shading on right curve
+  for (let y = 4; y <= 14; y++) set(buf, 15, y, bsh);
 
   if (dorami) {
     rect(buf, 2, 0, 5, 2, red);
@@ -645,7 +683,7 @@ function drawDoraemonHeadBack(buf: Buf, dorami = false, minidora = false): void 
     set(buf, 8, 1, red); set(buf, 9, 1, red);
   }
   // Collar back
-  rect(buf, 4, 16, 13, 17, minidora ? [255, 220, 0] : red);
+  rect(buf, 4, 16, 13, 16, minidora ? [255, 220, 0] : red);
 }
 
 function composeDoraemon(dorami = false, minidora = false): Buf {
