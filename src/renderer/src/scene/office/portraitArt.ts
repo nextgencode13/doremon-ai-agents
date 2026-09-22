@@ -823,7 +823,6 @@ const RECIPES: Record<OfficeCharacterName, Recipe> = {
   gianmom:  { skin: 'tan',   hairc: [30, 25, 20],   hair: 'styleBun',      cloth: 'cardigan', c1: [150, 45, 35], c2: [255, 250, 240], pants: [80, 70, 70], brow: 'angry', mouth: 'frown', heavy: true },
   suneomom: { skin: 'light', hairc: [35, 30, 35],   hair: 'styleCurly',    cloth: 'dress', c1: [142, 68, 173], pants: [90, 50, 110], glasses: true, brow: 'raised', mouth: 'smile', blush: true, lashes: true },
   // ─── The Office & Floor Management ────────────────────────────────────────
-  michael:  { skin: 'light', hairc: [58, 42, 28],   hair: 'styleShort',  hairargs: { part: 'L' }, cloth: 'suit', c1: [58, 63, 74], tie: [170, 58, 58], brow: 'flat', mouth: 'smile' },
   jim:      { skin: 'light', hairc: [92, 60, 34],   hair: 'styleFloppy', cloth: 'dressshirt', c1: [172, 196, 224], tie: [120, 130, 150], brow: 'flat', mouth: 'smile' },
   pam:      { skin: 'light', hairc: [120, 76, 42],  hair: 'styleFrame',  hairargs: { length: 18, vol: 2 }, cloth: 'cardigan', c1: [236, 174, 192], c2: [244, 242, 238], brow: 'soft', mouth: 'smile', blush: true, lashes: true },
   dwight:   { skin: 'light', hairc: [64, 48, 28],   hair: 'styleShort',  hairargs: { part: 'L', recede: 1 }, cloth: 'dressshirt', c1: [184, 155, 62], tie: [120, 82, 46], glasses: true, brow: 'angry', mouth: 'neutral' },
@@ -884,7 +883,7 @@ const bufCache = new Map<OfficeCharacterName, Buf>();
 const sceneCache = new Map<OfficeCharacterName, SceneFrames>();
 
 function getBuf(rawName: OfficeCharacterName): Buf {
-  const name = (rawName === 'michael' || !rawName) ? 'doraemon' : rawName;
+  const name = (rawName === 'doraemon' || !rawName) ? 'doraemon' : rawName;
   let buf = bufCache.get(name);
   if (!buf) {
     if (name === 'doraemon') buf = composeDoraemon(false, false);
@@ -900,7 +899,7 @@ export interface SceneFrames { front: Buf[]; back: Buf[]; }
 
 /** Walk-phase frames (stand, step-L, step-R) for the in-scene sprite, front + back. */
 export function sceneFrameBufs(rawName: OfficeCharacterName): SceneFrames {
-  const name = (rawName === 'michael' || !rawName) ? 'doraemon' : rawName;
+  const name = (rawName === 'doraemon' || !rawName) ? 'doraemon' : rawName;
   let frames = sceneCache.get(name);
   if (!frames) {
     if (name === 'doraemon') {

@@ -4,7 +4,7 @@
 
 In the current live UI, you saw:
 1. **Window Title & Top-Left Logo**: The Electron window title, HTML `<title>`, and top-left header brand still say **"Munder Difflin"** with the old yellow icon.
-2. **Active Agents (Michael, Angela, Kelly)**: Munder Difflin persists your active session in local storage (`~/.munder-difflin/` and SQLite). Because those agents were created in previous sessions before the Doraemon conversion, the persisted database reloads them on startup instead of auto-spawning the new Doraemon fleet.
+2. **Active Agents (Doraemon, Angela, Kelly)**: Munder Difflin persists your active session in local storage (`~/.munder-difflin/` and SQLite). Because those agents were created in previous sessions before the Doraemon conversion, the persisted database reloads them on startup instead of auto-spawning the new Doraemon fleet.
 3. **Scranton Office Map**: The 2D floor tileset and map layout are still themed as the Dunder Mifflin paper office.
 
 ---
@@ -52,7 +52,7 @@ In the current live UI, you saw:
 * **Add a "Transform to Doraemon Fleet" Quick-Action**:
   * In the top bar and Settings modal, add a one-click button: **"Switch to Doraemon Squad (ドラえもん隊)"**.
   * When clicked (or on first clean launch), it converts existing persisted agents into:
-    * `Michael (God)` $\rightarrow$ **Doraemon** (Command Center & 4D Gadget Orchestrator)
+    * `Doraemon (God)` $\rightarrow$ **Doraemon** (Command Center & 4D Gadget Orchestrator)
     * `Angela` $\rightarrow$ **Shizuka** (Docs & QA)
     * `Kelly` $\rightarrow$ **Nobita** (Rapid Prototyper)
     * Spawns **Gian**, **Suneo**, and **Dorami** if desired.
@@ -84,7 +84,7 @@ In the current live UI, you saw:
 ## 4. Verification & Testing
 
 1. **Clean State Validation**:
-   - Trigger the one-click fleet transformer and verify that bottom cards immediately switch from Michael/Angela/Kelly to **Doraemon**, **Nobita**, **Shizuka**, **Gian**, etc.
+   - Trigger the one-click fleet transformer and verify that bottom cards immediately switch from Doraemon/Angela/Kelly to **Doraemon**, **Nobita**, **Shizuka**, **Gian**, etc.
 2. **Visual Inspection**:
    - Verify top-left brand says **"Doraemon AI Agents"** with Doraemon icon.
    - Verify window title is **"Doraemon AI Agents"**.

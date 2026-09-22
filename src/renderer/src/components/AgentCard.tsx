@@ -3,7 +3,7 @@ import { PixelPanel } from './PixelPanel';
 import { PixelBadge, StatusKind } from './PixelBadge';
 import { useHasTerminalDraft } from './terminalPool';
 import { SpritePortrait } from './SpritePortrait';
-import { RealtimeMichaelToggle } from './RealtimeMichaelToggle';
+import { RealtimeDoraemonToggle } from './RealtimeDoraemonToggle';
 import { CostHud } from '@/realtime/CostHud';
 import { AccentColorName } from '@/design/tokens';
 import { OfficeCharacterName } from '@/scene/office/cast';
@@ -61,7 +61,7 @@ export function AgentCard({
   const [hover, setHover] = useState(false);
   const typing = useHasTerminalDraft(ptyId);
   // IDENTITY and SELECTION are two different things, and conflating them is why
-  // selecting Michael appeared to do nothing.
+  // selecting Doraemon appeared to do nothing.
   //
   // The card used to pass `isGod || selected` into PixelPanel's 'active' variant,
   // whose frame is `inset 1px + 3px accent + 5px ink` — five pixels of border in
@@ -196,7 +196,7 @@ export function AgentCard({
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'space-between', minWidth: 0 }}>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, minWidth: 0, flex: 1 }}>
                 {onRename ? (
-                  <AgentNameEditor name={isGod && (name.toLowerCase() === 'michael' || name.startsWith('m.')) ? 'Doraemon' : name} onCommit={onRename} uppercase />
+                  <AgentNameEditor name={isGod && (name.toLowerCase() === 'doraemon' || name.toLowerCase().startsWith('m')) ? 'Doraemon' : name} onCommit={onRename} uppercase />
                 ) : (
                   <span style={{
                     fontFamily: 'var(--cth-font-display)',
@@ -205,7 +205,7 @@ export function AgentCard({
                     color: 'var(--cth-ink-900)',
                     flex: 1, minWidth: 0,
                     whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'
-                  }}>{(isGod && (name.toLowerCase() === 'michael' || name.startsWith('m.')) ? 'Doraemon' : name).toUpperCase()}</span>
+                  }}>{(isGod && (name.toLowerCase() === 'doraemon' || name.toLowerCase().startsWith('m')) ? 'Doraemon' : name).toUpperCase()}</span>
                 )}
                 {isGod && (
                   <span style={{
@@ -247,7 +247,7 @@ export function AgentCard({
                 }}
                 onClick={(e) => e.stopPropagation()}
               >
-                <RealtimeMichaelToggle />
+              {isGod && <RealtimeDoraemonToggle />}
                 <CostHud compact />
               </div>
             ) : (

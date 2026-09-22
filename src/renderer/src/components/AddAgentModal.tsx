@@ -51,7 +51,7 @@ const DESCRIPTION_TEMPLATES: { label: string; description: string; goal: string 
   {
     label: 'Nobita · Prototyper',
     description: 'rapid experimenter & gadget-driven scripter',
-    goal: 'Quickly draft prototypes, write small scripts, test new ideas with available tools, and ask Michael/Doraemon for gadgets when blocked.'
+    goal: 'Quickly draft prototypes, write small scripts, test new ideas with available tools, and ask Doraemon for gadgets when blocked.'
   },
   {
     label: 'Shizuka · Docs & QA',

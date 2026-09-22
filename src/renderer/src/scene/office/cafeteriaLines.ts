@@ -51,7 +51,7 @@ const TABLE: readonly string[] = [
   'did you see the standup notes?',
   'pretending to read my notes',
   'I needed this break, honestly',
-  'do NOT tell Michael I’m in here',
+  'do NOT tell Doraemon I’m in here',
 ];
 
 const SPOT_POOL: Record<BreakSpot, readonly string[]> = {
@@ -61,7 +61,7 @@ const SPOT_POOL: Record<BreakSpot, readonly string[]> = {
 // ─── character flavour — overrides the generic pool when present ─────────────
 
 const BY_CHARACTER: Partial<Record<OfficeCharacterName, readonly string[]>> = {
-  michael:  ['I DECLARE… BANKRUPTCY!', "that's what she said", "I'm not superstitious. just a little stitious.", 'no meetings before coffee. that’s the rule.'],
+  doraemon: ['Dorayaki time!', 'Need a secret gadget?', 'Anywhere Door would solve this.', 'checking the 4D pocket...'],
   dwight:   ['FALSE.', 'identity theft is not a joke', 'that mug is regulation', 'this fridge needs a beet drawer', 'Schrute Farms has better coffee'],
   jim:      ["...that's what she said", 'bears. beets. Battlestar Galactica.', 'I moved Dwight’s stapler again', 'just here for the gossip'],
   pam:      ['Dunder Mifflin, this is Pam', 'sketching the vending machine', 'the watercolor of the break room'],
@@ -187,8 +187,8 @@ const TWSS_EXCHANGES: readonly Exchange[] = [
   ['I can hold it a really long time.', 'that’s what she said.', 'my breath!', 'still.'],
   ['why is it taking so long?', 'that’s what she said.', 'I hate you.', 'then why set me up?'],
   ['I can’t do it with people watching.', 'that’s what she said.', 'the presentation!', 'sure.'],
-  ['it’s deeper than it looks.', 'that’s what she said.', 'the pothole, Michael!', 'doesn’t matter.'],
-  ['so much longer than last time.', 'that’s what she said.', 'the report, Michael.', 'right, right.'],
+  ['it’s deeper than it looks.', 'that’s what she said.', 'the pothole, Doraemon!', 'doesn’t matter.'],
+  ['so much longer than last time.', 'that’s what she said.', 'the report, Doraemon.', 'right, right.'],
   ['oh my god, it went on FOREVER.', 'that’s what she said.', 'the Twilight movie!', 'classic.'],
   ['can’t believe how thick this is.', 'that’s what she said.', 'the folder. *stares*'],
   ['I fit all THAT in one day?', 'that’s what she said.', 'that’s actually what I said!', 'meta.'],
@@ -201,7 +201,7 @@ const TWSS_EXCHANGES: readonly Exchange[] = [
   ['*to no one* that’s what she said.', 'nobody said anything.', 'just thinking about earlier.'],
   ['*on the phone* that’s what she said.', 'who was that?', 'my mother. about a sandwich.'],
   ['too hot in here! that’s what she said.', 'you said both parts.', 'I contain multitudes.'],
-  ['*at the TV* that’s what she said.', 'you’re alone, Michael.', 'she doesn’t know that.'],
+  ['*at the TV* that’s what she said.', 'you’re alone, Doraemon.', 'she doesn’t know that.'],
   ['you need to be more professional.', 'that’s what she said.', 'I am she.', '...that’s what she said.'],
   ['stop. just stop. every time—', 'that’s what she said.', '*leaves the room*', '*whispers* that’s what she said.'],
   ['as you can see, it’s going up.', 'that’s what she said.', '*everyone groans*', 'set that one up myself.'],
@@ -216,7 +216,7 @@ const PAIR_POOL: readonly Exchange[] = [...EXCHANGES, ...TWSS_EXCHANGES];
 // Keyed off the SPEAKER so, when the right character sits down first, they get
 // to open with their signature bit.
 const KEYED_EXCHANGES: Partial<Record<OfficeCharacterName, Exchange>> = {
-  michael:  ['that’s what she said.', '...there it is.'],
+  doraemon: ['I have a gadget for this!', '...is it going to explode, Doraemon?'],
   dwight:   ['identity theft is not a joke.', 'nobody touched your stapler, Dwight.'],
   kevin:    ['why few word when lot word?', '...just use the words, Kevin.'],
   kelly:    ['okay don’t freak out, but—', 'I’m already freaking out.'],

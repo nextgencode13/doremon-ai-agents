@@ -5,7 +5,7 @@
 The goal is to convert Munder Difflin's cast, visual avatars, and command interfaces into the **Doraemon universe**, structured as:
 * **Doraemon = The Command Center (The 4D Pocket Control Room)**
   * Manages global missions, scheduled tasks, gadget skills (MCP catalog), memory recall ("Memory Bread"), and fleet telemetry.
-* **Michael = The Floor Boss / Physical Orchestrator**
+* **Doraemon = The Floor Boss / Physical Orchestrator**
   * Retained as the tactical boss running the live 2D office floor, moving avatars, dispatching work, and managing terminal sessions.
 * **The Doraemon Squad = The Multi-Agent Worker Fleet**
   * Nobita, Shizuka, Gian, Suneo, Dorami, Dekisugi, Jaiko, Sensei, and Sewashi as selectable pixel-art agents with specialized developer roles.
@@ -17,7 +17,7 @@ The goal is to convert Munder Difflin's cast, visual avatars, and command interf
 | Character | Role & Specialization | Persona Blurb | Signature Palette |
 | :--- | :--- | :--- | :--- |
 | **Doraemon** | **Command Center Overseer & Gadget Master** | "22nd-century cat robot with all the tools" | `#1e90ff` (Blue) + `#e60012` (Red Collar) + `#ffd700` (Bell) |
-| **Michael** | **Floor Boss & Tactical Orchestrator** | "World's best floor manager" | `#5a6b8c` (Classic Slate) |
+| **Doraemon** | **Floor Boss & Tactical Orchestrator** | "World's best floor manager" | `#5a6b8c` (Classic Slate) |
 | **Nobita** | **Rapid Prototyper / Scripter** | "Fast attempts, relies on gadgets & teamwork" | `#f4d03f` (Yellow Shirt) + `#2c3e50` (Round Glasses) |
 | **Shizuka** | **Code Quality & Documentation Reviewer** | "Clean code, tests, and elegant documentation" | `#ff69b4` (Pink Dress) + `#8b4513` (Twin Tails) |
 | **Gian (Takeshi)** | **Heavy Refactoring & Build Engineer** | "Brute-force refactors, dependency updates & CI" | `#e67e22` (Orange/Brown Stripe) |
@@ -79,17 +79,17 @@ The Command Center will be themed around Doraemon's iconic secret gadgets:
   - Relabel MCP skills as **"Secret Gadgets"** (with gadget icons like Bamboo Copter and Anywhere Door).
   - Add quick-trigger mission buttons themed around classic Doraemon episode tools.
 
-### Phase 4: Office Floor Theme & Michael Integration
+### Phase 4: Office Floor Theme & Doraemon Integration
 **Files to update:**
 - [`src/renderer/src/scene/office/OfficeFloor.tsx`](file:///c:/Users/anubh/Desktop/2026/August/munder-difflin/src/renderer/src/scene/office/OfficeFloor.tsx)
 - [`src/renderer/src/scene/office/themeRegistry.ts`](file:///c:/Users/anubh/Desktop/2026/August/munder-difflin/src/renderer/src/scene/office/themeRegistry.ts)
   - Add **"22nd-Century Lab"** or **"Nobita's Tatami Room"** theme alongside standard Dunder Mifflin office themes.
-  - Keep Michael seated in the corner manager office coordinating the Nobita/Gian/Suneo desk cluster.
+  - Keep Doraemon seated in the corner manager office coordinating the Nobita/Gian/Suneo desk cluster.
 
 ### Phase 5: Voice & Speech Integration
 **Files to update:**
 - [`src/renderer/src/realtime/session.ts`](file:///c:/Users/anubh/Desktop/2026/August/munder-difflin/src/renderer/src/realtime/session.ts)
-  - Update system prompt instructions to recognize the Doraemon fleet names while maintaining Michael as the floor boss voice.
+  - Update system prompt instructions to recognize the Doraemon fleet names while maintaining Doraemon as the floor boss voice.
 
 ---
 

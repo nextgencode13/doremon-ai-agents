@@ -5,7 +5,7 @@ import { getDoraemonImageUrl } from '@/assets/doraemon';
  * Loader shown on the empty floor while the god agent ("Doraemon") is clocking
  * in on launch.
  */
-export function MichaelBooting() {
+export function DoraemonBooting() {
   return (
     <div style={{
       position: 'absolute', inset: 0,
@@ -52,3 +52,5 @@ export function MichaelBooting() {
     </div>
   );
 }
+
+

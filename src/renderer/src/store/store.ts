@@ -81,12 +81,12 @@ export interface Agent {
   /** the last prompt the user submitted to this agent in Claude Code —
    *  shown on the floor as a card above the seated avatar */
   lastPrompt?: string;
-  /** the orchestrator ("god") agent — seated in Michael's room, runs the floor */
+  /** the orchestrator ("god") agent — seated in Doraemon's room, runs the floor */
   isGod?: boolean;
-  /** Michael's prep assistant — send-only; enriches prompts and forwards them to
+  /** Doraemon's prep assistant — send-only; enriches prompts and forwards them to
    *  the god. Excluded from broadcast fan-out and from the restorable-dead sweep. */
   isAssistant?: boolean;
-  /** The human has this agent 1:1 and Michael has been told to leave it alone.
+  /** The human has this agent 1:1 and Doraemon has been told to leave it alone.
    *  Mirrors `RegistryAgent.onHold`; main owns the record, this is the copy the
    *  title bar renders from. */
   onHold?: boolean;
@@ -153,10 +153,10 @@ export interface QueuedMessage {
 // v0.3.4: at-a-glance branch/status/log without opening the IDE.
 export type SidebarTab = 'terminal' | 'messages' | 'traces' | 'git';
 
-/** Lifecycle of the god agent ("Michael") bootstrap on launch.
+/** Lifecycle of the god agent ("Doraemon") bootstrap on launch.
  *  'booting' until his PTY is confirmed live, then 'ready' (or 'failed' if the
  *  spawn errored). The empty-floor UI shows a loader while 'booting' so users
- *  don't see the "add agent" prompt before Michael has clocked in. */
+ *  don't see the "add agent" prompt before Doraemon has clocked in. */
 export type GodStatus = 'booting' | 'ready' | 'failed';
 
 interface State {
@@ -265,7 +265,7 @@ interface State {
   hasGroqKey: boolean;
   setHasGroqKey: (has: boolean) => void;
   /** Mirror of BYOK OpenAI key presence (boolean only — the key lives in the main
-   *  secret broker, never the store). Gates the Realtime Michael voice toggle the
+   *  secret broker, never the store). Gates the Realtime Doraemon voice toggle the
    *  way hasGroqKey gates the Free Flow mic. Set by App on load via
    *  window.cth.realtimeHasOpenAiKey(). */
   hasOpenAiKey: boolean;
@@ -468,7 +468,7 @@ function persistedSlice(
 }
 
 export const DORAEMON_LEGACY_MAP: Record<string, { character: OfficeCharacterName; name: string; accent: AccentColorName }> = {
-  michael:  { character: 'doraemon', name: 'Doraemon',    accent: 'sky' },
+  doraemon:  { character: 'doraemon', name: 'Doraemon',    accent: 'sky' },
   angela:   { character: 'shizuka',  name: 'Shizuka',     accent: 'lilac' },
   kelly:    { character: 'nobita',   name: 'Nobita',      accent: 'lemon' },
   jim:      { character: 'suneo',    name: 'Suneo',       accent: 'sky' },
@@ -487,15 +487,16 @@ export const DORAEMON_LEGACY_MAP: Record<string, { character: OfficeCharacterNam
 
 export function migrateAgentToDoraemon<T extends { character?: string; name?: string; accent?: AccentColorName; isGod?: boolean }>(a: T): T {
   if (!a) return a;
-  const charKey = (a.character || '').toLowerCase();
+  const rawKey = (a.character || '').toLowerCase();
+  const charKey = (rawKey.startsWith('m') && a.isGod) ? 'doraemon' : rawKey;
   const legacy = DORAEMON_LEGACY_MAP[charKey];
-  if (legacy) {
-    const isNamedAfterOld = !a.name || a.name.toLowerCase() === charKey || (a.isGod && a.name.toLowerCase() === 'michael');
+  if (legacy || a.isGod) {
+    const isNamedAfterOld = !a.name || a.name.toLowerCase() === charKey || (a.isGod && (a.name.toLowerCase() === 'doraemon' || a.name.toLowerCase().startsWith('m')));
     return {
       ...a,
-      character: legacy.character,
-      name: isNamedAfterOld ? legacy.name : a.name,
-      accent: legacy.accent ?? a.accent,
+      character: legacy?.character ?? 'doraemon',
+      name: isNamedAfterOld ? (legacy?.name ?? 'Doraemon') : a.name,
+      accent: (legacy?.accent ?? a.accent) ?? 'sky',
     };
   }
   return a;
@@ -772,7 +773,7 @@ export const useStore = create<State>((set, get) => ({
       // addAgent for the same id — never render a duplicate card. The first writer
       // (richer local record) wins; the broadcast is a no-op for it.
       if (s.agents.some((a) => a.id === agent.id)) return s;
-      // GOD enters at the HEAD, everyone else at the tail. Michael's position was
+      // GOD enters at the HEAD, everyone else at the tail. Doraemon's position was
       // otherwise decided by a race he usually lost: useHive's bootstrap removes
       // the restored god entry, then spawns him asynchronously (a setTimeout, a
       // listPtys round-trip, and a --resume that seeds a transcript first), while

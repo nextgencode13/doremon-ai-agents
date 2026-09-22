@@ -137,7 +137,7 @@ export interface AgentMeta {
   capabilities?: string[];
   cwd: string;
   isGod?: boolean;
-  /** Michael's prep assistant — enriches prompts and forwards them to Michael.
+  /** Doraemon's prep assistant — enriches prompts and forwards them to Doraemon.
    *  Send-only: excluded from broadcast fan-out so it never drains an inbox. */
   isAssistant?: boolean;
 }
@@ -149,7 +149,7 @@ export interface RegistryAgent extends AgentMeta {
    *  (not deleted) so its history/memory survive; only agents with a live PTY
    *  are 'active'. Broadcast fan-out + roster reads skip archived agents. */
   archived?: boolean;
-  /** The human has this agent 1:1 and Michael must leave it alone until they
+  /** The human has this agent 1:1 and Doraemon must leave it alone until they
    *  flip it back. Held agents stay ACTIVE and keep their terminal — this is
    *  "do not dispatch to them", not "they are gone", which is why it is its own
    *  flag rather than a reuse of `archived` or a breaker level. */
@@ -540,7 +540,7 @@ export class HiveManager {
     const log = join(root, 'log.jsonl');
     if (!existsSync(log)) writeFileSync(log, '', 'utf8');
 
-    // The Claude Code command reference Michael consults (refreshed each bootstrap
+    // The Claude Code command reference Doraemon consults (refreshed each bootstrap
     // so it tracks the bundled list).
     writeFileSync(join(root, 'COMMANDS.md'), COMMANDS_MD, 'utf8');
 
@@ -647,8 +647,8 @@ export class HiveManager {
     } else {
       try {
         const memContent = readFileSync(memory, 'utf8');
-        if (memContent.startsWith('# Memory — Michael (god)') || (meta.isGod && memContent.startsWith('# Memory — Michael'))) {
-          writeFileSync(memory, memContent.replace(/^# Memory — Michael[^\n]*/, `# Memory — ${meta.name} (${meta.id})`), 'utf8');
+        if (memContent.startsWith('# Memory — Doraemon (god)') || (meta.isGod && memContent.startsWith('# Memory — Doraemon'))) {
+          writeFileSync(memory, memContent.replace(/^# Memory — Doraemon[^\n]*/, `# Memory — ${meta.name} (${meta.id})`), 'utf8');
         }
       } catch { /* best effort */ }
     }
@@ -929,7 +929,7 @@ export class HiveManager {
    * the new name immediately rather than waiting for the periodic fleet refresh.
    */
   /**
-   * Put an agent on hold, or take it off, and tell Michael immediately.
+   * Put an agent on hold, or take it off, and tell Doraemon immediately.
    *
    * `fleet.json` is patched in the same operation for the same reason
    * `renameAgent` does it: god's roster is injected from that file on its next
@@ -1667,10 +1667,10 @@ export class HiveManager {
     if (!existsSync(p)) return '';
     try {
       let content = readFileSync(p, 'utf8');
-      if (content.startsWith('# Memory — Michael')) {
+      if (content.startsWith('# Memory — Doraemon')) {
         const reg = this.registry();
         const agentName = reg.agents[id]?.name ?? (this.isGod(id) || id === 'god' ? 'Doraemon' : 'Doraemon');
-        content = content.replace(/^# Memory — Michael[^\n]*/, `# Memory — ${agentName} (${id})`);
+        content = content.replace(/^# Memory — Doraemon[^\n]*/, `# Memory — ${agentName} (${id})`);
         writeFileSync(p, content, 'utf8');
       }
       return content;
@@ -2117,7 +2117,7 @@ export class HiveManager {
     } catch (e) { console.error('[hive] installGrokHooks failed:', e); }
   }
 
-  /** Write the live fleet snapshot Michael reads (`fleet.json`, gitignored).
+  /** Write the live fleet snapshot Doraemon reads (`fleet.json`, gitignored).
    *  Best-effort — called from a timer, must never throw. */
   writeFleetSnapshot(snapshot: unknown): void {
     const root = this.root();

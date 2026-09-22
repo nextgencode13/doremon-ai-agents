@@ -39,9 +39,9 @@ const FEATURES: Feature[] = [
   },
   {
     icon: 'gear',
-    label: 'MICHAEL IS YOUR CLONE',
+    label: 'DORAEMON IS YOUR ORCHESTRATOR',
     desc: 'Your clone runs the floor — triages requests, routes tasks, and escalates only what needs you.',
-    descPlain: 'Your clone, Michael, takes your requests, hands work to the right agent, and only interrupts you when it matters.',
+    descPlain: 'Your 4D gadget orchestrator, Doraemon, takes your requests, hands work to the right agent, and only interrupts you when it matters.',
     tint: 'var(--cth-sky-light)', edge: 'var(--cth-sky)'
   },
   {
@@ -106,7 +106,7 @@ export function OnboardingWizard({ onComplete }: OnboardingWizardProps) {
   const [busy, setBusy] = useState(false);
 
   // Which engine CLIs are actually on this machine. The picker used to record the
-  // choice blind; the first check happened when Michael spawned, and for a
+  // choice blind; the first check happened when Doraemon spawned, and for a
   // provider with no installer that meant a first run where nothing ever booted.
   // `undefined` = probe not back yet (or failed): rows show no badge and nothing
   // is blocked, because a broken probe must not lock a new user out.
@@ -532,7 +532,7 @@ export function OnboardingWizard({ onComplete }: OnboardingWizardProps) {
                     ))}
                   </select>
                   <div style={{ fontSize: 12, color: 'var(--cth-ink-500)' }}>
-                    This only sets Michael's engine. You can run other providers per agent later.
+                    This only sets Doraemon's engine. You can run other providers per agent later.
                   </div>
                 </div>
               </>
@@ -766,7 +766,7 @@ export function OnboardingWizard({ onComplete }: OnboardingWizardProps) {
                       }
                       // Same idea for the engine: refuse here, with the reason on
                       // screen, instead of letting a pick that cannot boot through
-                      // to a Michael that never starts.
+                      // to a Doraemon that never starts.
                       if (step === 'orchestrator' && engineBlocked) {
                         setError(`${providerPreset(godProvider).label} is not installed. Install it and press "check again", or pick another engine.`);
                         return;

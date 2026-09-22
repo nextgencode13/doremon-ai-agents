@@ -1,7 +1,7 @@
 # Munder Difflin v0.4.5
 
 **A local hive of Claude Code, Antigravity, Codex, Gemini, Cursor, Grok & Copilot agents that run themselves.**
-Messaging, routing, and remembering, coordinated by your clone, Michael, who you talk to. Local-first and open source.
+Messaging, routing, and remembering, coordinated by your clone, Doraemon, who you talk to. Local-first and open source.
 
 ### → [**munderdiffl.in**](https://munderdiffl.in/) · see it in action, then grab a build below
 
@@ -39,7 +39,7 @@ paths everywhere, one editor instead of two, and 23 community pull requests.
   run after an update opens that release's page.
 - **Settings opens with a card** carrying your version, your plan, and a way back to these notes.
 - **Terminals follow the window theme,** Gemini CLI and Cursor Agent join the engine list, and
-  Michael hires on his own terms with editable agent names.
+  Doraemon hires on his own terms with editable agent names.
 
 ### A note on Pro
 
@@ -287,7 +287,7 @@ reviewed one, or filed the bug that led to one. The full list is in CHANGELOG.md
         <li><i>Windows</i><div><b>Quitting the app quits the agents</b></div></li>
         <li><i>Engines</i><div><b>Gemini CLI and Cursor Agent join the floor</b></div></li>
         <li><i>Terminal</i><div><b>TUIs follow the window theme</b></div></li>
-        <li><i>Agents</i><div><b>Michael hires on his own terms, and names are editable</b></div></li>
+        <li><i>Agents</i><div><b>Doraemon hires on his own terms, and names are editable</b></div></li>
       </ul>
 
       <div class="thanks">
@@ -348,10 +348,10 @@ the app.
 
 ---
 
-## Still new in 0.4.3 — *Michael is the logo*
+## Still new in 0.4.3 — *Doraemon is the logo*
 
 **The mark is a face now.** Munder Difflin has always been an office you watch people work in,
-and the icon was a pair of script initials on a gradient. It's Michael — your clone — drawn in
+and the icon was a pair of script initials on a gradient. It's Doraemon — your clone — drawn in
 the app's own pixel art, on the brand yellow, looking straight back at you.
 
 - **One mark, everywhere.** The dock icon on macOS, Windows and Linux, the site favicon and
@@ -394,10 +394,10 @@ open-source project should build it:
 
 ## Still new in 0.4.1 — *The app says what the site says*
 
-**Michael is your clone.** The website has been describing Munder Difflin as a clone of you that
+**Doraemon is your clone.** The website has been describing Munder Difflin as a clone of you that
 works around the clock — the app still called it a "GOD agent." Now they match.
 
-- **Your clone, not the GOD agent.** Michael is described as your clone throughout onboarding,
+- **Your clone, not the GOD agent.** Doraemon is described as your clone throughout onboarding,
   and his card on the floor carries a **BOSS** tag — he's the boss of the agents, you're still
   the boss of him.
 - **Onboarding was rewritten.** It opens on what you actually get ("a clone of you, working
@@ -441,7 +441,7 @@ works around the clock — the app still called it a "GOD agent." Now they match
   [@gts-47](https://github.com/gts-47) and [@qschmick](https://github.com/qschmick).
 - **0.3.3** — the built-in Monaco IDE, and GitHub Copilot CLI as the first community-contributed
   engine ([@anxkhn](https://github.com/anxkhn)).
-- **0.3.2** — Realtime Michael: a voice channel to the GOD orchestrator.
+- **0.3.2** — Realtime Doraemon: a voice channel to the GOD orchestrator.
 - **0.3.1** — three more engines: OpenCode, Crush, and pi.dev.
 
 Full history in the [CHANGELOG](https://github.com/chaitanyagiri/munder-difflin/blob/main/CHANGELOG.md).
@@ -457,7 +457,7 @@ This release carries community work. All 23 of these landed in v0.4.5:
 |---|---|---|
 | [#157](https://github.com/chaitanyagiri/munder-difflin/pull/157) | [@gpechieu](https://github.com/gpechieu) | inherited Claude Code session markers are stripped from an agent's PTY env |
 | [#158](https://github.com/chaitanyagiri/munder-difflin/pull/158) | [@gpechieu](https://github.com/gpechieu) | semantic memory works on Apple Silicon again: embeddings are pinned to CPU on macOS |
-| [#159](https://github.com/chaitanyagiri/munder-difflin/pull/159) | [@gpechieu](https://github.com/gpechieu) | reliable spawn, teardown and floor cards for the workers Michael hires |
+| [#159](https://github.com/chaitanyagiri/munder-difflin/pull/159) | [@gpechieu](https://github.com/gpechieu) | reliable spawn, teardown and floor cards for the workers Doraemon hires |
 | [#165](https://github.com/chaitanyagiri/munder-difflin/pull/165) | [@rajpreetcodes](https://github.com/rajpreetcodes) | a `~` in the harness home folder resolves, so setup cannot die on ENOENT |
 | [#171](https://github.com/chaitanyagiri/munder-difflin/pull/171) | [@KrushanPatel](https://github.com/KrushanPatel) | CONTRIBUTING.md matches the platforms the app actually supports |
 | [#175](https://github.com/chaitanyagiri/munder-difflin/pull/175) | [@rekcilyssup](https://github.com/rekcilyssup) | a main-process watchdog wakes an idle worker sitting on an undrained inbox |
@@ -475,7 +475,7 @@ This release carries community work. All 23 of these landed in v0.4.5:
 | [#203](https://github.com/chaitanyagiri/munder-difflin/pull/203) | [@lifelmy](https://github.com/lifelmy) | the Crush config env points at the agent's own directory |
 | [#210](https://github.com/chaitanyagiri/munder-difflin/pull/210) | [@chaitanyagiri](https://github.com/chaitanyagiri) | the art licence claims are true again, Modern Interiors is bought |
 | [#214](https://github.com/chaitanyagiri/munder-difflin/pull/214) | [@pontusm](https://github.com/pontusm) | Windows agent processes quit when the app does |
-| [#219](https://github.com/chaitanyagiri/munder-difflin/pull/219) | [@chaitanyagiri](https://github.com/chaitanyagiri) | engine availability is checked before Michael's engine is committed |
+| [#219](https://github.com/chaitanyagiri/munder-difflin/pull/219) | [@chaitanyagiri](https://github.com/chaitanyagiri) | engine availability is checked before Doraemon's engine is committed |
 | [#226](https://github.com/chaitanyagiri/munder-difflin/pull/226) | [@chaitanyagiri](https://github.com/chaitanyagiri) | the floor reports lifetime spend, not spend since the last app restart |
 | [#227](https://github.com/chaitanyagiri/munder-difflin/pull/227) | [@scy73](https://github.com/scy73) | the renderer runs inside Chromium's sandbox |
 
@@ -535,7 +535,7 @@ Apple Silicon and Intel.
 - macOS 12+, Windows 10/11, or a modern Linux desktop
 - [Claude Code](https://claude.com/claude-code) installed and on your `PATH` (and/or the Antigravity `agy` or OpenAI `codex` CLI for those providers)
 - A Claude Code subscription (Munder Difflin drives your existing `claude` CLI — it doesn't replace it)
-- For **Realtime Michael** (voice): your own **OpenAI key with Realtime API access** — without it the **Talk** button stays disabled
+- For **Realtime Doraemon** (voice): your own **OpenAI key with Realtime API access** — without it the **Talk** button stays disabled
 
 ---
 
@@ -553,8 +553,8 @@ To produce installers yourself: `npm run dist` (current OS), or `dist:mac` / `di
 
 ## What's inside
 - **The simulation** — every agent is a real `claude` (or `agy` / `codex` / local-provider) pseudo-terminal, visualized as an avatar on a watchable office floor (`node-pty` · `xterm.js` · Pixi.js).
-- **Talk to Michael** — a realtime **voice channel to the GOD orchestrator** that reads the hive and acts behind spoken echo-back confirmation, BYOK and main-only.
-- **Selectable engines + per-hire capabilities** — each hire (and Michael himself) runs on a pluggable engine, with its own consented skills + MCP catalog.
+- **Talk to Doraemon** — a realtime **voice channel to the GOD orchestrator** that reads the hive and acts behind spoken echo-back confirmation, BYOK and main-only.
+- **Selectable engines + per-hire capabilities** — each hire (and Doraemon himself) runs on a pluggable engine, with its own consented skills + MCP catalog.
 - **MemPalace** — a markdown-first, semantic memory layer the whole office shares; cross-session recall in ~12ms.
 - **GOD orchestrator + hive** — one agent you talk to routes work to specialists and stays autonomous, escalating only critical items (spend, destructive ops, scope) to you natively, through human-in-the-loop prompts. It can also spawn an ephemeral worker straight from Slack and tear it down safely.
 - **Plugs into your setup** — your subscription, settings, skills, and MCP servers, plus an integrations registry with a write-only secret broker; `/remote-control` reaches the whole floor from your phone.

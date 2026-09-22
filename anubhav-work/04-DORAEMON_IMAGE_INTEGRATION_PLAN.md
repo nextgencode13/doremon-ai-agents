@@ -68,7 +68,7 @@ anubhav-work/Doremon-character-img/ (15 PNGs)
      | 'doraemon' | 'nobita' | 'shizuka' | 'gian' | 'suneo' | 'dorami'
      | 'dekisugi' | 'jaiko' | 'sensei' | 'sewashi' | 'minidora'
      | 'tamako' | 'nobisuke' | 'gianmom' | 'suneomom'
-     | 'michael' | 'jim' | 'pam' | 'dwight' | 'kevin' | ...;
+     | 'doraemon' | 'jim' | 'pam' | 'dwight' | 'kevin' | ...;
    ```
 2. Populate `OFFICE_CAST` array with displayName, signature shirt/glow color, and specialized persona blurbs for all 15 characters.
 
@@ -78,7 +78,7 @@ anubhav-work/Doremon-character-img/ (15 PNGs)
    * **Add Agent & Edit Agent Modals**
    * **Agent Strip (Active Floor Avatars)**
    * **Command Center Header & Fleet Monitor Cards**
-   * **Voice HUD (Realtime Michael / Doraemon)**
+   * **Voice HUD (Realtime Doraemon / Doraemon)**
    * **Task Kanban Assignment Avatars**
 3. Gracefully fall back to procedural canvas generation if an image fails to load.
 

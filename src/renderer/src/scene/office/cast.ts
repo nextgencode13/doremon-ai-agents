@@ -13,7 +13,7 @@ export type OfficeCharacterName =
   | 'doraemon' | 'nobita' | 'shizuka' | 'gian' | 'suneo' | 'dorami'
   | 'dekisugi' | 'jaiko' | 'sensei' | 'sewashi' | 'minidora'
   | 'tamako' | 'nobisuke' | 'gianmom' | 'suneomom'
-  | 'michael' | 'jim' | 'pam' | 'dwight' | 'kevin' | 'angela'
+  | 'doraemon' | 'jim' | 'pam' | 'dwight' | 'kevin' | 'angela'
   | 'oscar' | 'stanley' | 'phyllis' | 'andy' | 'kelly' | 'ryan'
   | 'toby' | 'creed' | 'meredith';
 
@@ -45,7 +45,7 @@ export const OFFICE_CAST: CastMember[] = [
   { name: 'gianmom',   displayName: 'Gian’s Mom',  shirt: '#962d22', blurb: 'Hard Circuit Breaker & Emergency Stop' },
   { name: 'suneomom',  displayName: 'Suneo’s Mom', shirt: '#8e44ad', blurb: 'Premium Model Router & Context Ops' },
   // ─── The Office & Floor Management ───────────────────────────────────────
-  { name: 'michael',  displayName: 'Michael',  shirt: '#5a6b8c', blurb: "Floor Boss & Orchestrator" },
+  { name: 'doraemon',  displayName: 'Doraemon', shirt: '#1e90ff', blurb: "Floor Boss & Orchestrator" },
   { name: 'jim',      displayName: 'Jim',      shirt: '#6fa8dc', blurb: 'Salesman, prankster' },
   { name: 'pam',      displayName: 'Pam',      shirt: '#9caf88', blurb: 'Receptionist, artist' },
   { name: 'dwight',   displayName: 'Dwight',   shirt: '#b89b3e', blurb: 'Assistant (to the) RM' },
@@ -87,7 +87,7 @@ function bufToTexture(buf: Uint8ClampedArray): Texture {
 }
 
 const DORAEMON_NAME_MAP: Record<string, OfficeCharacterName> = {
-  michael:  'doraemon',
+  doraemon:  'doraemon',
   angela:   'shizuka',
   kelly:    'nobita',
   jim:      'suneo',

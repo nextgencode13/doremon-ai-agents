@@ -18,7 +18,6 @@ export const DORAEMON_IMAGES: Record<string, string> = {
   gianmom: '/Doremon-character-img/gianmom.png',
   suneomom: '/Doremon-character-img/suneomom.png',
   // Legacy mappings so existing sessions immediately show the authentic Doraemon illustrations
-  michael: '/Doremon-character-img/doraemon.png',
   angela: '/Doremon-character-img/shizuka.png',
   kelly: '/Doremon-character-img/nobita.png',
   jim: '/Doremon-character-img/suneo.png',

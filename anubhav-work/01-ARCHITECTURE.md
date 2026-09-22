@@ -4,7 +4,7 @@
 
 **Munder Difflin** is an open-source, local-first **multi-agent desktop harness** that turns standalone CLI coding agents (Claude Code, Antigravity / Gemini CLI `agy`, OpenAI Codex, xAI Grok, Kimi, Qwen, OpenCode, Crush, pi.dev, GitHub Copilot CLI, Cursor) into an autonomous, self-coordinating team.
 
-The application presents a Sims-like 2D pixel-art office floor where individual agents sit at desks, visit specialized stations when invoking tools, pass atomic message envelopes, and maintain long-term memory. A supervisor agent ("Michael") runs the floor, delegating tasks and escalating critical human-in-the-loop (HITL) decisions to the user.
+The application presents a Sims-like 2D pixel-art office floor where individual agents sit at desks, visit specialized stations when invoking tools, pass atomic message envelopes, and maintain long-term memory. A supervisor agent ("Doraemon") runs the floor, delegating tasks and escalating critical human-in-the-loop (HITL) decisions to the user.
 
 ---
 
@@ -89,7 +89,7 @@ Multi-agent coordination is designed around robust distributed systems patterns 
    * Agents write solely to their own directory (`agents/<id>/outbox/`).
    * Main process file router moves messages atomically from sender `outbox/` to receiver `inbox/`.
    * Files are created with unique timestamps (`<timestamp>-<uuid>.json`) via write-then-rename to guarantee atomicity.
-3. **The "GOD" Supervisor (Michael)**:
+3. **The "GOD" Supervisor (Doraemon)**:
    * Acts as the chief router and adjudicator.
    * Resolves routine queries and subtasks autonomously.
    * Escalates high-risk operations (financial spend, destructive commands, major scope changes) to human-in-the-loop prompts.
@@ -136,7 +136,7 @@ src/
 │   │   ├── TasksKanban.tsx             # Kanban board for multi-agent task tracking
 │   │   ├── MemoryGraphPanel.tsx        # Force-directed knowledge graph visualization
 │   │   ├── SettingsModal.tsx           # Settings (keys, models, themes, triggers)
-│   │   └── RealtimeMichaelToggle.tsx   # Voice interface HUD & controls
+│   │   └── RealtimeDoraemonToggle.tsx   # Voice interface HUD & controls
 │   └── store/                          # State Management
 │       ├── store.ts                    # Zustand primary state store
 │       └── config.ts                   # Client-side configuration state
@@ -165,4 +165,4 @@ src/
 ## 7. Voice & Realtime Control Plane
 
 * **Realtime Voice Engine**: Integrated with OpenAI Realtime API and Groq Whisper (`Free Flow`).
-* **Microphone HUD**: Allows users to hold Option / click to verbally instruct Michael ("GOD orchestrator"), who analyzes floor state, creates tasks on the Kanban board, and dispatches them to specialized agents.
+* **Microphone HUD**: Allows users to hold Option / click to verbally instruct Doraemon ("GOD orchestrator"), who analyzes floor state, creates tasks on the Kanban board, and dispatches them to specialized agents.

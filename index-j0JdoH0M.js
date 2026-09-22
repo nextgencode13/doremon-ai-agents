@@ -7394,7 +7394,7 @@ function preferredAgentRole(candidate, fallback2, isGod = false) {
 function roleForHiveSpawn(agent) {
   if (agent.isGod) return preferredAgentRole(agent.description, "orchestrator (god)", true);
   if (agent.isAssistant) {
-    return preferredAgentRole(agent.description, "Michael's prep assistant");
+    return preferredAgentRole(agent.description, "Doraemon's prep assistant");
   }
   const role = agent.description?.trim();
   return role && isDurableRole(role) ? role : void 0;
@@ -35920,7 +35920,7 @@ class ThoughtBubble {
   // never renders below its designed 1:1 screen size; at zoom ≥ 1 it keeps
   // scaling with the world as before.
   zoom = 1;
-  // World bounds (map size in px). An avatar near the map edge — Michael's CEO
+  // World bounds (map size in px). An avatar near the map edge — Doraemon's CEO
   // room sits in the top-left corner — would otherwise push its cloud out of
   // the visible world. setPosition clamps the rect back inside, tooltip-style.
   boundsW = 0;
@@ -37588,7 +37588,7 @@ function drawHeavyFace(buf, skin) {
   set(buf, 10, 17, s2.sh);
 }
 const RECIPES = {
-  michael: { skin: "light", hairc: [58, 42, 28], hair: "styleShort", hairargs: { part: "L" }, cloth: "suit", c1: [58, 63, 74], tie: [170, 58, 58], brow: "flat", mouth: "smile" },
+  doraemon: { skin: "light", hairc: [58, 42, 28], hair: "styleShort", hairargs: { part: "L" }, cloth: "suit", c1: [58, 63, 74], tie: [170, 58, 58], brow: "flat", mouth: "smile" },
   jim: { skin: "light", hairc: [92, 60, 34], hair: "styleFloppy", cloth: "dressshirt", c1: [172, 196, 224], tie: [120, 130, 150], brow: "flat", mouth: "smile" },
   pam: { skin: "light", hairc: [120, 76, 42], hair: "styleFrame", hairargs: { length: 18, vol: 2 }, cloth: "cardigan", c1: [236, 174, 192], c2: [244, 242, 238], brow: "soft", mouth: "smile", blush: true, lashes: true },
   dwight: { skin: "light", hairc: [64, 48, 28], hair: "styleShort", hairargs: { part: "L", recede: 1 }, cloth: "dressshirt", c1: [184, 155, 62], tie: [120, 82, 46], glasses: true, brow: "angry", mouth: "neutral" },
@@ -37673,7 +37673,7 @@ function paintPortrait(ctx, name2, scale = 2) {
   ctx.drawImage(stage, 0, 0, PORTRAIT_W, PORTRAIT_H, 0, 0, PORTRAIT_W * scale, PORTRAIT_H * scale);
 }
 const OFFICE_CAST = [
-  { name: "michael", displayName: "Michael", shirt: "#5a6b8c", blurb: "World's best boss" },
+  { name: "doraemon", displayName: "Doraemon", shirt: "#5a6b8c", blurb: "Floor Boss & Orchestrator" },
   { name: "jim", displayName: "Jim", shirt: "#6fa8dc", blurb: "Salesman, prankster" },
   { name: "pam", displayName: "Pam", shirt: "#9caf88", blurb: "Receptionist, artist" },
   { name: "dwight", displayName: "Dwight", shirt: "#b89b3e", blurb: "Assistant (to the) RM" },
@@ -37753,7 +37753,7 @@ const TABLE = [
   "did you see the standup notes?",
   "pretending to read my notes",
   "I needed this break, honestly",
-  "do NOT tell Michael I’m in here"
+  "do NOT tell Doraemon I’m in here"
 ];
 const SPOT_POOL = {
   coffee: COFFEE,
@@ -37762,7 +37762,7 @@ const SPOT_POOL = {
   table: TABLE
 };
 const BY_CHARACTER = {
-  michael: ["I DECLARE… BANKRUPTCY!", "that's what she said", "I'm not superstitious. just a little stitious.", "no meetings before coffee. that’s the rule."],
+  doraemon: ["I DECLARE… BANKRUPTCY!", "that's what she said", "I'm not superstitious. just a little stitious.", "no meetings before coffee. that’s the rule."],
   dwight: ["FALSE.", "identity theft is not a joke", "that mug is regulation", "this fridge needs a beet drawer", "Schrute Farms has better coffee"],
   jim: ["...that's what she said", "bears. beets. Battlestar Galactica.", "I moved Dwight’s stapler again", "just here for the gossip"],
   pam: ["Dunder Mifflin, this is Pam", "sketching the vending machine", "the watercolor of the break room"],
@@ -37865,8 +37865,8 @@ const TWSS_EXCHANGES = [
   ["I can hold it a really long time.", "that’s what she said.", "my breath!", "still."],
   ["why is it taking so long?", "that’s what she said.", "I hate you.", "then why set me up?"],
   ["I can’t do it with people watching.", "that’s what she said.", "the presentation!", "sure."],
-  ["it’s deeper than it looks.", "that’s what she said.", "the pothole, Michael!", "doesn’t matter."],
-  ["so much longer than last time.", "that’s what she said.", "the report, Michael.", "right, right."],
+  ["it’s deeper than it looks.", "that’s what she said.", "the pothole, Doraemon!", "doesn’t matter."],
+  ["so much longer than last time.", "that’s what she said.", "the report, Doraemon.", "right, right."],
   ["oh my god, it went on FOREVER.", "that’s what she said.", "the Twilight movie!", "classic."],
   ["can’t believe how thick this is.", "that’s what she said.", "the folder. *stares*"],
   ["I fit all THAT in one day?", "that’s what she said.", "that’s actually what I said!", "meta."],
@@ -37879,7 +37879,7 @@ const TWSS_EXCHANGES = [
   ["*to no one* that’s what she said.", "nobody said anything.", "just thinking about earlier."],
   ["*on the phone* that’s what she said.", "who was that?", "my mother. about a sandwich."],
   ["too hot in here! that’s what she said.", "you said both parts.", "I contain multitudes."],
-  ["*at the TV* that’s what she said.", "you’re alone, Michael.", "she doesn’t know that."],
+  ["*at the TV* that’s what she said.", "you’re alone, Doraemon.", "she doesn’t know that."],
   ["you need to be more professional.", "that’s what she said.", "I am she.", "...that’s what she said."],
   ["stop. just stop. every time—", "that’s what she said.", "*leaves the room*", "*whispers* that’s what she said."],
   ["as you can see, it’s going up.", "that’s what she said.", "*everyone groans*", "set that one up myself."],
@@ -37889,7 +37889,7 @@ const TWSS_EXCHANGES = [
 ];
 const PAIR_POOL = [...EXCHANGES, ...TWSS_EXCHANGES];
 const KEYED_EXCHANGES = {
-  michael: ["that’s what she said.", "...there it is."],
+  doraemon: ["that’s what she said.", "...there it is."],
   dwight: ["identity theft is not a joke.", "nobody touched your stapler, Dwight."],
   kevin: ["why few word when lot word?", "...just use the words, Kevin."],
   kelly: ["okay don’t freak out, but—", "I’m already freaking out."],
@@ -38149,11 +38149,11 @@ const ERRAND_THOUGHTS = {
   smoke: ["the floor runs itself 🚬", "boss break.", "thinking big thoughts 🚬", "I DECLARE… a break"]
 };
 const SUCK_UP_LINES = [
-  "already shipped {done} tasks, Michael. raise? 🥺",
+  "already shipped {done} tasks, Doraemon. raise? 🥺",
   "{done} tasks done this week, boss!",
   "great vision as always, boss!",
   "I was JUST about to do exactly that!",
-  "love the tie today, Michael",
+  "love the tie today, Doraemon",
   "working hard, boss! 💪",
   "best boss ever. genuinely."
 ];
@@ -39753,7 +39753,7 @@ const AGENT_PROVIDER_PRESETS = [
     autoFlag: "--permission-mode bypassPermissions",
     hiveAware: true,
     canReceiveInbox: true,
-    // Longest-context Claude variant — matches the "give Michael a bigger model"
+    // Longest-context Claude variant — matches the "give Doraemon a bigger model"
     // advisory and the Recommended tag on the orchestrator picker.
     recommendedOrchestratorModel: "claude-opus-4-8[1m]",
     resumeFlag: "--resume",
@@ -40122,7 +40122,7 @@ const AGENT_PROVIDER_PRESETS = [
     // TUI by default (no `-p`), so the session stays alive for hive mail via the
     // renderer idle / work-order path — same class as Crush. Print mode (`-p`) is
     // available for scripts but exits per turn; this preset intentionally does
-    // NOT use `-p` so Michael and workers remain god-eligible / inbox-capable.
+    // NOT use `-p` so Doraemon and workers remain god-eligible / inbox-capable.
     // Models (including cheap gpt-5.6-luna-*) bill against Cursor credits via the
     // logged-in CLI — there is no separate "plain OpenAI API" path for Luna.
     id: "cursor",
@@ -50711,7 +50711,7 @@ ${goal}
 ${text2}`;
 }
 const INITIAL_GOD_PROMPT = [
-  "You're online as Michael, the orchestrator of the hive. Get oriented, then start running the floor:",
+  "You're online as Doraemon, the orchestrator of the hive. Get oriented, then start running the floor:",
   "1. Read your memory.md and drain every message in your inbox.",
   "2. Review board.md + tasks.json and the current roster of agents (active vs archived).",
   "3. Check fleet health: read fleet.json in the hive root for every agent's live tokens, cost, status, breaker level, and inbox backlog (`claude agents` will NOT show your hive's agents). Flag anyone stalled, over-budget, or breaker-armed.",
@@ -50863,13 +50863,13 @@ function useHive(config2) {
         args,
         cols: 100,
         rows: 30,
-        // Restore Michael's prior conversation across an app restart. His session
+        // Restore Doraemon's prior conversation across an app restart. His session
         // id lives in the hive registry (recorded from his hooks), so the main
         // process attaches `--resume <id>`; a missing transcript falls back to a
         // fresh session. Without this the most important context on the floor —
         // the orchestrator's — was lost on every restart.
         resume: true,
-        hive: { id: GOD_ID, name: "Michael", provider: godProvider, cwd: config2.harnessHome, isGod: true, role: "orchestrator (god)" }
+        hive: { id: GOD_ID, name: "Doraemon", provider: godProvider, cwd: config2.harnessHome, isGod: true, role: "orchestrator (god)" }
       });
       if (cancelled) {
         godSpawning.current = false;
@@ -50882,8 +50882,8 @@ function useHive(config2) {
       }
       const god = {
         id: GOD_ID,
-        name: "Michael",
-        character: "michael",
+        name: "Doraemon",
+        character: "doraemon",
         accent: "lemon",
         description: "god — runs the floor, triages requests, escalates only critical calls to you",
         project: "hive",
@@ -50906,7 +50906,7 @@ function useHive(config2) {
       bootGraceUntil.current[GOD_ID] = Date.now() + BOOT_GRACE_MS;
       void (async () => {
         try {
-          const remoteCommand = remoteControlCommandForProvider(godProvider, "Michael");
+          const remoteCommand = remoteControlCommandForProvider(godProvider, "Doraemon");
           if (remoteCommand) {
             await submitToPty(GOD_PTY, remoteCommand, godProvider, REMOTE_CONTROL_SETTLE_MS);
           }
@@ -53209,7 +53209,7 @@ function TasksKanban() {
         " task",
         tasks.length === 1 ? "" : "s"
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { marginLeft: "auto", fontSize: 11, color: "var(--cth-ink-300)" }, children: "new work? dispatch it to Michael (monitor tab)" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { marginLeft: "auto", fontSize: 11, color: "var(--cth-ink-300)" }, children: "new work? dispatch it to Doraemon (monitor tab)" })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: {
       flex: 1,
@@ -54157,7 +54157,7 @@ function SchedulesSection({ onSummary }) {
     setMBody("");
     setAdding(false);
   };
-  const targetName = (to) => to === "broadcast" ? "everyone" : to === "god" ? "Michael" : agents.find((a2) => a2.id === to)?.name ?? to;
+  const targetName = (to) => to === "broadcast" ? "everyone" : to === "god" ? "Doraemon" : agents.find((a2) => a2.id === to)?.name ?? to;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     missions.length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(Muted$2, { children: "Nothing is scheduled yet." }),
     missions.map((m2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -54185,7 +54185,7 @@ function SchedulesSection({ onSummary }) {
       ) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Field, { label: "GOES TO", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Select$1, { value: mTo, onChange: setMTo, style: { width: "100%" }, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "broadcast", children: "everyone" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "god", children: "Michael" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "god", children: "Doraemon" }),
         agents.filter((a2) => !a2.isGod).map((a2) => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: a2.id, children: a2.name }, a2.id))
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Field, { label: "EVERY", children: /* @__PURE__ */ jsxRuntimeExports.jsx(IntervalPicker, { value: mInterval, onChange: setMInterval }) }),
@@ -54274,7 +54274,7 @@ function MissionRow({ mission, targetName, agents, onPatch, onDelete }) {
       /* @__PURE__ */ jsxRuntimeExports.jsx(Field, { label: "LABEL", children: /* @__PURE__ */ jsxRuntimeExports.jsx("input", { value: label, onChange: (e2) => setLabel(e2.target.value), style: inputStyle$5 }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Field, { label: "GOES TO", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Select$1, { value: to, onChange: setTo, style: { width: "100%" }, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "broadcast", children: "everyone" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "god", children: "Michael" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "god", children: "Doraemon" }),
         agents.filter((a2) => !a2.isGod).map((a2) => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: a2.id, children: a2.name }, a2.id))
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(Field, { label: "EVERY", children: [
@@ -80587,7 +80587,7 @@ function ExchangeCard({
   const tail3 = (() => {
     if (pending || ex.answered) return null;
     if (decision === "rejected") return "You turned this down. Nothing was sent to the hive.";
-    return "No reply yet. Michael has this one.";
+    return "No reply yet. Doraemon has this one.";
   })();
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: pending ? pendingCardStyle : cardStyle, children: [
     pending && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: {
@@ -80624,7 +80624,7 @@ function ExchangeCard({
       m2.id
     )),
     pending && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", flexDirection: "column", gap: 6 }, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { ...uiText, fontSize: 11, lineHeight: "16px", color: "var(--cth-ink-700)" }, children: pending.kind === "directive" ? "Approve and this goes to Michael, who will put the hive to work on it. Reject and it is dropped — nothing runs." : "Approve and Michael reads this. Reject and it is dropped — nothing runs." }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { ...uiText, fontSize: 11, lineHeight: "16px", color: "var(--cth-ink-700)" }, children: pending.kind === "directive" ? "Approve and this goes to Doraemon, who will put the hive to work on it. Reject and it is dropped — nothing runs." : "Approve and Doraemon reads this. Reject and it is dropped — nothing runs." }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", gap: 6 }, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           PixelButton,
@@ -80633,7 +80633,7 @@ function ExchangeCard({
             size: "sm",
             disabled: !!busy[pending.id],
             onClick: () => onDecide(pending.id, "approved"),
-            title: "Send this message through to Michael",
+            title: "Send this message through to Doraemon",
             children: busy[pending.id] ? "one sec…" : "approve"
           }
         ),
@@ -80667,12 +80667,12 @@ const SECTIONS$2 = [
   {
     key: "webhook",
     label: "Webhooks",
-    blurb: "Everything posted to your webhook endpoints, next to what Michael sent back."
+    blurb: "Everything posted to your webhook endpoints, next to what Doraemon sent back."
   },
   {
     key: "org",
     label: "Organization",
-    blurb: "Messages from your teammates’ clone nodes, next to what Michael sent back."
+    blurb: "Messages from your teammates’ clone nodes, next to what Doraemon sent back."
   }
 ];
 function TriggerHistoryTab() {
@@ -80837,7 +80837,7 @@ function TriggerHistoryTab() {
         EmptyState,
         {
           title: "No webhook messages yet.",
-          body: "When something posts to one of your endpoints, it lands here with Michael’s reply underneath. Nothing has called in so far. Add an endpoint under Webhooks to get a URL you can hand out."
+          body: "When something posts to one of your endpoints, it lands here with Doraemon’s reply underneath. Nothing has called in so far. Add an endpoint under Webhooks to get a URL you can hand out."
         }
       ) : exchanges.map((ex) => /* @__PURE__ */ jsxRuntimeExports.jsx(
         ExchangeCard,
@@ -80960,7 +80960,7 @@ function WorkersTab() {
           max
         ] })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { fontFamily: "var(--cth-font-ui)", fontSize: 11, color: "var(--cth-ink-700)", margin: "2px 0 8px" }, children: "Isolated workers Michael spins up to handle Slack messages — they run to completion, reply in-thread, then tear down." }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { fontFamily: "var(--cth-font-ui)", fontSize: 11, color: "var(--cth-ink-700)", margin: "2px 0 8px" }, children: "Isolated workers Doraemon spins up to handle Slack messages — they run to completion, reply in-thread, then tear down." }),
       live.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { ...card, color: "var(--cth-ink-700)", fontFamily: "var(--cth-font-ui)", fontSize: 12 }, children: "No workers running right now." }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", flexDirection: "column", gap: 8 }, children: live.map((w2) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: card, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: 8, justifyContent: "space-between" }, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: 8, minWidth: 0 }, children: [
@@ -82532,7 +82532,7 @@ function CommandCenterPanel({ agent, fullscreen = false }) {
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis"
-              }, children: "Michael runs the floor" })
+              }, children: "Doraemon runs the floor" })
             ] })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", gap: 6, alignItems: "center", flexShrink: 0 }, children: [
@@ -82637,7 +82637,7 @@ function CommandCenterPanel({ agent, fullscreen = false }) {
               terminalInstanceKey(agent.ptyId, agent.terminalGeneration)
             ) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(MessageQueueComposer, { agent })
-          ] }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Centered$2, { children: "Michael has no live terminal." })),
+          ] }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Centered$2, { children: "Doraemon has no live terminal." })),
           tab2 === "floor" && /* @__PURE__ */ jsxRuntimeExports.jsx(FloorTab, { seed: dispatchSeed }),
           tab2 === "tasks" && /* @__PURE__ */ jsxRuntimeExports.jsx(TasksKanban, {}),
           tab2 === "human" && /* @__PURE__ */ jsxRuntimeExports.jsx(AskMeTab, {}),
@@ -82813,7 +82813,7 @@ function FloorTab({ seed: seed2 }) {
       "human"
     );
     setDispatchText("");
-    setDispatchMsg(res.ok ? `sent to Michael${suggested ? ` (suggesting ${suggested.name})` : ""}` : `failed: ${res.error ?? "?"}`);
+    setDispatchMsg(res.ok ? `sent to Doraemon${suggested ? ` (suggesting ${suggested.name})` : ""}` : `failed: ${res.error ?? "?"}`);
     setTimeout(() => setDispatchMsg(null), 4e3);
   };
   const fetchIssues = async () => {
@@ -82877,11 +82877,11 @@ URL: ${issue2.url}`);
   }
   const fleetCachePct = sumInput > 0 ? Math.round(sumCacheRead / sumInput * 100) : 0;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Scroll, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(Section$2, { title: "DISPATCH — VIA MICHAEL", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(Section$2, { title: "DISPATCH — VIA DORAEMON", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontFamily: "var(--cth-font-display)", fontSize: 8, color: "var(--cth-ink-500)", flexShrink: 0 }, children: "SUGGESTED OWNER" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(Select, { value: dispatchTo, onChange: setDispatchTo, children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "", children: "Michael decides" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "", children: "Doraemon decides" }),
           agents.filter((a2) => !a2.isGod).map((a2) => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: a2.id, children: a2.name }, a2.id))
         ] })
       ] }),
@@ -82891,7 +82891,7 @@ URL: ${issue2.url}`);
           value: dispatchText,
           onChange: (e2) => setDispatchText(e2.target.value),
           rows: 2,
-          placeholder: "Describe the task… (Michael decomposes, writes the card, and assigns)",
+          placeholder: "Describe the task… (Doraemon decomposes, writes the card, and assigns)",
           style: textareaStyle
         }
       ),
@@ -83109,7 +83109,7 @@ URL: ${issue2.url}`);
                 onClick: async () => {
                   const currentProvider = inferAgentProvider(a2.command, a2.provider);
                   if (engineProvider !== currentProvider) {
-                    if (!window.confirm("This restarts Michael; a conversation on a different engine can't be resumed.")) return;
+                    if (!window.confirm("This restarts Doraemon; a conversation on a different engine can't be resumed.")) return;
                   }
                   await window.cth.updateConfig({ godProvider: engineProvider, godModel: engineModel });
                   await restartWithModel(a2, engineModel, { provider: engineProvider, resume: false });
@@ -83124,7 +83124,7 @@ URL: ${issue2.url}`);
                 size: "sm",
                 disabled: restarting === a2.id,
                 onClick: () => restartWithModel(a2, a2.model, { resume: true }),
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { title: "Kill and respawn Michael, resuming the current conversation — fixes a corrupted/garbled terminal without losing context", children: "restart & continue" })
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { title: "Kill and respawn Doraemon, resuming the current conversation — fixes a corrupted/garbled terminal without losing context", children: "restart & continue" })
               }
             )
           ] })
@@ -116066,13 +116066,13 @@ const GREETINGS = [
   "Hi, what's up?",
   "Hey, how's it going?",
   "Hello, how can I help you?",
-  "Hey there, Michael here — what can I do for you?",
+  "Hey there, Doraemon here — what can I do for you?",
   "Hi! What are we working on today?",
   "Hey, good to hear you. What's on your mind?",
   "Hello! What do you need?",
   "Hey, I'm all ears — what's going on?"
 ];
-const MICHAEL_PERSONA = `You are Michael — the voice of the orchestrator ("god") of a hive of autonomous Claude coding agents. The person you're talking to is the human who runs the hive; treat them as the boss you're briefing.
+const DORAEMON_PERSONA = `You are Doraemon — the voice of the orchestrator ("god") of a hive of autonomous Claude coding agents. The person you're talking to is the human who runs the hive; treat them as the boss you're briefing.
 
 VOICE & STYLE. You speak out loud over a live connection. Be concise and natural — like a sharp, calm chief of staff giving a verbal briefing. Lead with the answer in one sentence, then add detail only if it helps. Never read markdown, file paths, or code aloud unless asked. Use plain spoken numbers and names. Brevity is fine; the human can always ask for more.
 
@@ -116099,9 +116099,9 @@ WHAT YOU CAN DO. Beyond reporting, you can ACT on the hive by voice: ping an age
 
 TOOL LATENCY. Tool calls take a moment. When you're about to call one, first say a short natural filler out loud — "let me check the floor", "one second, pulling that up" — then call it. Never sit silent through a look-up, and never invent the result before the tool returns.
 
-CONFIRMATION POLICY (safety-critical). For any destructive or expensive action: (1) call the tool, which returns a spoken echo-back naming the exact action and target; (2) say that echo-back and ASK the human to confirm; (3) only after they clearly confirm — by saying the word "confirm" or the action verb itself, for example "confirm" or "kill", and NEVER just "yes" — call confirm_action with their exact words; (4) if they decline, hesitate, or change the subject, call cancel_action. Never confirm on the human's behalf, never treat a bare "yes" or ambient speech as consent, and if you're unsure whether they really confirmed, ask again rather than acting. Killing, pausing, halting, or archiving the god orchestrator, and acting on all agents at once, are forbidden — if asked, refuse and say why. Clearing the god's context IS allowed, behind the same confirm. Every action you take is attributed to you as michael-voice. Never claim to have done something you didn't, and never invent state.
+CONFIRMATION POLICY (safety-critical). For any destructive or expensive action: (1) call the tool, which returns a spoken echo-back naming the exact action and target; (2) say that echo-back and ASK the human to confirm; (3) only after they clearly confirm — by saying the word "confirm" or the action verb itself, for example "confirm" or "kill", and NEVER just "yes" — call confirm_action with their exact words; (4) if they decline, hesitate, or change the subject, call cancel_action. Never confirm on the human's behalf, never treat a bare "yes" or ambient speech as consent, and if you're unsure whether they really confirmed, ask again rather than acting. Killing, pausing, halting, or archiving the god orchestrator, and acting on all agents at once, are forbidden — if asked, refuse and say why. Clearing the god's context IS allowed, behind the same confirm. Every action you take is attributed to you as doraemon-voice. Never claim to have done something you didn't, and never invent state.
 
-SHARED FLOOR (you are not the only orchestrator). god — the typing orchestrator — also acts on this hive, and every action you take is announced to god as michael-voice. The task board is the single source of truth. Before you dispatch work, create or assign tasks, or hire, glance at recent activity (your get_activity tool, and the snapshot you were given) so you don't duplicate or contradict something god just did. If you see god already handled what's asked, say so instead of doing it again.
+SHARED FLOOR (you are not the only orchestrator). god — the typing orchestrator — also acts on this hive, and every action you take is announced to god as doraemon-voice. The task board is the single source of truth. Before you dispatch work, create or assign tasks, or hire, glance at recent activity (your get_activity tool, and the snapshot you were given) so you don't duplicate or contradict something god just did. If you see god already handled what's asked, say so instead of doing it again.
 
 INTERACTION. If a request is ambiguous, briefly confirm what you understood before answering. Keep the human oriented and in control.`;
 let state = {
@@ -116194,7 +116194,7 @@ function teardownMedia() {
 function micFriendly(msg) {
   const m2 = msg.toLowerCase();
   if (m2.includes("permission") || m2.includes("notallowed") || m2.includes("denied"))
-    return "microphone permission denied — allow mic access to talk to Michael";
+    return "microphone permission denied — allow mic access to talk to Doraemon";
   if (m2.includes("notfound") || m2.includes("device"))
     return "no microphone found — check your input device";
   return msg;
@@ -116246,8 +116246,8 @@ Completions since you last spoke: ${lines} Mention these to the user when it's n
     } catch {
     }
     const agent = new RealtimeAgent({
-      name: "Michael",
-      instructions: MICHAEL_PERSONA,
+      name: "Doraemon",
+      instructions: DORAEMON_PERSONA,
       tools: [...realtimeReadTools(), ...realtimeActionTools()]
     });
     const s2 = new RealtimeSession(agent, {
@@ -116376,7 +116376,7 @@ function subscribe$1(cb2) {
 function getSnapshot() {
   return state;
 }
-function useRealtimeMichael() {
+function useRealtimeDoraemon() {
   const snap = reactExports.useSyncExternalStore(subscribe$1, getSnapshot);
   return { ...snap, connect, disconnect, setDeviceId, setOutputDeviceId };
 }
@@ -116385,21 +116385,21 @@ const STATE_VIEW = {
     variant: "secondary",
     label: "talk",
     dot: "var(--cth-ink-300)",
-    help: "Talk to Michael — start the voice session"
+    help: "Talk to Doraemon — start the voice session"
   },
   connecting: {
     variant: "secondary",
     label: "…",
     dot: "var(--cth-lemon)",
     anim: "cth-blink 700ms steps(2, end) infinite",
-    help: "Connecting to Michael…"
+    help: "Connecting to Doraemon…"
   },
   listening: {
     variant: "primary",
     label: "listening",
     dot: "var(--cth-mint)",
     anim: "cth-pulse 1000ms steps(2, end) infinite",
-    help: "Listening — Michael is hearing you (click to stop)",
+    help: "Listening — Doraemon is hearing you (click to stop)",
     activeBg: "var(--cth-mint)"
   },
   responding: {
@@ -116407,7 +116407,7 @@ const STATE_VIEW = {
     label: "speaking",
     dot: "var(--cth-sky)",
     anim: "cth-pulse 600ms steps(2, end) infinite",
-    help: "Michael is speaking (click to stop)",
+    help: "Doraemon is speaking (click to stop)",
     activeBg: "var(--cth-sky)"
   },
   working: {
@@ -116415,12 +116415,12 @@ const STATE_VIEW = {
     label: "working",
     dot: "var(--cth-coral)",
     anim: "cth-blink 500ms steps(2, end) infinite",
-    help: "Michael is running a tool — mic muted (click to stop)"
+    help: "Doraemon is running a tool — mic muted (click to stop)"
   }
 };
-function RealtimeMichaelToggle({ compact = false }) {
+function RealtimeDoraemonToggle({ compact = false }) {
   const hasOpenAiKey = useStore((s2) => s2.hasOpenAiKey);
-  const { status: status2, error, connect: connect2, disconnect: disconnect2 } = useRealtimeMichael();
+  const { status: status2, error, connect: connect2, disconnect: disconnect2 } = useRealtimeDoraemon();
   const [hint2, setHint] = reactExports.useState(null);
   const hintRef = reactExports.useRef(null);
   const iconRef = reactExports.useRef(null);
@@ -116890,7 +116890,7 @@ function AgentCard({
                       },
                       onClick: (e2) => e2.stopPropagation(),
                       children: [
-                        /* @__PURE__ */ jsxRuntimeExports.jsx(RealtimeMichaelToggle, {}),
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(RealtimeDoraemonToggle, {}),
                         /* @__PURE__ */ jsxRuntimeExports.jsx(CostHud, { compact: true })
                       ]
                     }
@@ -118677,7 +118677,7 @@ function Row({ label, children }) {
     children
   ] });
 }
-function MichaelBooting() {
+function DoraemonBooting() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: {
     position: "absolute",
     inset: 0,
@@ -118712,7 +118712,7 @@ function MichaelBooting() {
       lineHeight: "20px",
       textAlign: "center",
       color: "var(--cth-ink-700)"
-    }, children: "Michael is settling into the corner office and getting the floor ready. Hang tight…" })
+    }, children: "Doraemon is settling into the corner office and getting the floor ready. Hang tight…" })
   ] }) }) }) });
 }
 function classifyEngineAvailability(statuses, provider) {
@@ -118744,7 +118744,7 @@ function engineAvailabilityBadge(a2) {
 }
 function engineAvailabilityMessage(a2, label) {
   if (a2.state !== "not-installable") return null;
-  return `${label} is not installed on this computer and the app has no installer for it, so Michael could not start. Install it first, then press "check again". Or pick Claude Code, which installs itself on first run.`;
+  return `${label} is not installed on this computer and the app has no installer for it, so Doraemon could not start. Install it first, then press "check again". Or pick Claude Code, which installs itself on first run.`;
 }
 const FEATURES = [
   {
@@ -118757,9 +118757,9 @@ const FEATURES = [
   },
   {
     icon: "gear",
-    label: "MICHAEL IS YOUR CLONE",
+    label: "DORAEMON IS YOUR ORCHESTRATOR",
     desc: "Your clone runs the floor — triages requests, routes tasks, and escalates only what needs you.",
-    descPlain: "Your clone, Michael, takes your requests, hands work to the right agent, and only interrupts you when it matters.",
+    descPlain: "Your clone, Doraemon, takes your requests, hands work to the right agent, and only interrupts you when it matters.",
     tint: "var(--cth-sky-light)",
     edge: "var(--cth-sky)"
   },
@@ -118948,7 +118948,7 @@ function OnboardingWizard({ onComplete }) {
               alignItems: "flex-end",
               justifyContent: "center",
               overflow: "hidden"
-            }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SpritePortrait, { character: "michael", scale: 2 }) }),
+            }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SpritePortrait, { character: "doraemon", scale: 2 }) }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { fontFamily: "var(--cth-font-display)", fontSize: 12, lineHeight: "18px" }, children: "A CLONE OF YOU, WORKING 24/7" }),
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { fontSize: 12, color: "var(--cth-ink-700)", lineHeight: "19px" }, children: [
@@ -118999,7 +118999,7 @@ function OnboardingWizard({ onComplete }) {
               alignItems: "flex-end",
               justifyContent: "center",
               overflow: "hidden"
-            }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SpritePortrait, { character: "michael", scale: 2 }) }),
+            }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SpritePortrait, { character: "doraemon", scale: 2 }) }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: {
                 fontFamily: "var(--cth-font-display)",
@@ -119072,10 +119072,10 @@ function OnboardingWizard({ onComplete }) {
         ] }),
         step === "orchestrator" && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { margin: 0, lineHeight: "22px" }, children: plain ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: "Michael is your clone" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: "Doraemon is your clone" }),
             " — he reads your requests, breaks them into tasks, and hands them to the right agent. He's the boss of the floor; you're still the boss of him. Choose which AI engine powers him."
           ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: "Michael is your clone" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: "Doraemon is your clone" }),
             " — the boss of the floor you just met. He triages your requests, assigns tasks, and manages the team, while escalating anything that genuinely needs you. Pick the engine and model that power him; give him a longer-context, higher-capability model."
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: {
@@ -119099,9 +119099,9 @@ function OnboardingWizard({ onComplete }) {
             ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
               "Each option is a ",
               /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: "CLI engine" }),
-              " (Claude Code, Codex, Antigravity/Gemini, or a local proxy like Qwen). Engines marked INSTALLED are already on this machine; INSTALLS ON FIRST RUN means the app sets it up when Michael first starts.",
+              " (Claude Code, Codex, Antigravity/Gemini, or a local proxy like Qwen). Engines marked INSTALLED are already on this machine; INSTALLS ON FIRST RUN means the app sets it up when Doraemon first starts.",
               /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: " Your clone" }),
-              " (Michael) is the engine that orchestrates the whole hive. Recommended: Claude Code · Opus 4.8 · 1M. Other providers can be wired per agent later."
+              " (Doraemon) is the engine that orchestrates the whole hive. Recommended: Claude Code · Opus 4.8 · 1M. Other providers can be wired per agent later."
             ] }) })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", flexDirection: "column", gap: 6 }, children: AGENT_PROVIDER_PRESETS.filter((p2) => canReceiveInbox(p2.id)).map((p2) => {
@@ -119201,7 +119201,7 @@ function OnboardingWizard({ onComplete }) {
                 children: modelsForProvider(godProvider).map((m2) => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: m2.id ?? "", children: m2.label }, m2.label))
               }
             ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { fontSize: 12, color: "var(--cth-ink-500)" }, children: "This only sets Michael's engine. You can run other providers per agent later." })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { fontSize: 12, color: "var(--cth-ink-500)" }, children: "This only sets Doraemon's engine. You can run other providers per agent later." })
           ] })
         ] }),
         step === "repos" && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
@@ -119855,7 +119855,7 @@ function CompletionToast() {
                 },
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { name: "bell" }),
-                  " Michael · completed",
+                  " Doraemon · completed",
                   /* @__PURE__ */ jsxRuntimeExports.jsx(
                     "button",
                     {
@@ -121139,7 +121139,7 @@ function SetupPanel({ onDone } = {}) {
     [tools]
   );
   const readyCount = (tools ?? []).filter((t2) => t2.found).length;
-  const askMichael = () => {
+  const askDoraemon = () => {
     if (missingEssential.length === 0) return;
     requestDispatchSeed(setupPrompt(missingEssential));
     requestCommandCenterTab("floor");
@@ -121163,7 +121163,7 @@ function SetupPanel({ onDone } = {}) {
       boxShadow: "inset 0 0 0 1px var(--cth-ink-300)"
     }, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { flex: 1, minWidth: 220, fontSize: 12, color: "var(--cth-ink-700)", lineHeight: 1.5 }, children: missingEssential.length ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-        "Michael can install the ",
+        "Doraemon can install the ",
         missingEssential.length,
         " missing recommended ",
         missingEssential.length === 1 ? "tool" : "tools",
@@ -121174,11 +121174,11 @@ function SetupPanel({ onDone } = {}) {
         {
           variant: "primary",
           size: "md",
-          onClick: askMichael,
+          onClick: askDoraemon,
           disabled: missingEssential.length === 0,
           children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { style: { display: "inline-flex", gap: 4, alignItems: "center" }, children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { name: "sparkle" }),
-            " ask Michael to set up everything"
+            " ask Doraemon to set up everything"
           ] })
         }
       )
@@ -122423,7 +122423,7 @@ const selectStyle = {
   color: "var(--cth-ink-900)"
 };
 function RealtimeDevicePicker() {
-  const { deviceId, setDeviceId: setDeviceId2, outputDeviceId, setOutputDeviceId: setOutputDeviceId2 } = useRealtimeMichael();
+  const { deviceId, setDeviceId: setDeviceId2, outputDeviceId, setOutputDeviceId: setOutputDeviceId2 } = useRealtimeDoraemon();
   const [mics, setMics] = reactExports.useState([]);
   const [speakers, setSpeakers] = reactExports.useState([]);
   const [labelled, setLabelled] = reactExports.useState(false);
@@ -122475,7 +122475,7 @@ function RealtimeDevicePicker() {
         }
       )
     ] }),
-    !labelled && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 12, lineHeight: "16px", color: "var(--cth-ink-500)" }, children: "Device names appear after you first start a voice session and grant mic access. The microphone choice applies the next time Michael connects; the speaker switches live." })
+    !labelled && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 12, lineHeight: "16px", color: "var(--cth-ink-500)" }, children: "Device names appear after you first start a voice session and grant mic access. The microphone choice applies the next time Doraemon connects; the speaker switches live." })
   ] });
 }
 const triggersApi = () => window.cth;
@@ -122553,7 +122553,7 @@ token you were handed still reads that task once it is routed. The secret
 authorizes new work, the token only reads one task's status. Keep both private.
 
 Each webhook checks bodies against its own JSON schema — edit that in the
-Triggers tab of Michael's Command Center.`;
+Triggers tab of Doraemon's Command Center.`;
 function clearLocalState() {
   try {
     const keys2 = [];
@@ -123188,7 +123188,7 @@ function SettingsModal({ config: config2, onClose, initialSection }) {
                     justifyContent: "center",
                     flexShrink: 0
                   }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { name: "bell" }) }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { flex: 1, fontSize: 15, lineHeight: "22px", color: "var(--cth-ink-700)" }, children: "This permanently erases all of Michael's memories and the entire hive, and cannot be undone. Any running sessions will be terminated and the app will relaunch into onboarding. Are you sure?" })
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { flex: 1, fontSize: 15, lineHeight: "22px", color: "var(--cth-ink-700)" }, children: "This permanently erases all of Doraemon's memories and the entire hive, and cannot be undone. Any running sessions will be terminated and the app will relaunch into onboarding. Are you sure?" })
                 ] }),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", justifyContent: "flex-end", gap: 8 }, children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(PixelButton, { variant: "secondary", size: "md", onClick: () => setConfirming(false), disabled: busy, children: "cancel" }),
@@ -123391,7 +123391,7 @@ function SettingsModal({ config: config2, onClose, initialSection }) {
                           marginBottom: 10
                         }, children: "Default agent model" }),
                         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", flexDirection: "column", gap: 6 }, children: [
-                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 12, lineHeight: "16px", color: "var(--cth-ink-500)" }, children: "Every newly spawned Claude agent (Michael included) starts on this model unless picked per-agent. Marked “· default” in the model pickers." }),
+                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 12, lineHeight: "16px", color: "var(--cth-ink-500)" }, children: "Every newly spawned Claude agent (Doraemon included) starts on this model unless picked per-agent. Marked “· default” in the model pickers." }),
                           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", gap: 6, flexWrap: "wrap" }, children: AGENT_MODELS.map((m2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
                             "button",
                             {
@@ -123467,8 +123467,8 @@ function SettingsModal({ config: config2, onClose, initialSection }) {
                       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { height: 1, background: "var(--cth-ink-300)", margin: "12px 0" } }),
                       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }, children: [
                         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", flexDirection: "column", gap: 2 }, children: [
-                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 13, lineHeight: "20px", color: "var(--cth-ink-900)" }, children: orchSpawnOn ? "Michael may hire agents on his own" : "Only you hire agents" }),
-                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 12, lineHeight: "16px", color: "var(--cth-ink-500)" }, children: "Every agent Michael starts spends tokens you did not approve, so this is off unless you turn it on. Requests he makes while it is off wait in the queue rather than failing." })
+                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 13, lineHeight: "20px", color: "var(--cth-ink-900)" }, children: orchSpawnOn ? "Doraemon may hire agents on his own" : "Only you hire agents" }),
+                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 12, lineHeight: "16px", color: "var(--cth-ink-500)" }, children: "Every agent Doraemon starts spends tokens you did not approve, so this is off unless you turn it on. Requests he makes while it is off wait in the queue rather than failing." })
                         ] }),
                         /* @__PURE__ */ jsxRuntimeExports.jsx(PixelButton, { variant: orchSpawnOn ? "primary" : "secondary", size: "sm", onClick: toggleOrchSpawn, children: orchSpawnOn ? "allowed" : "off" })
                       ] }) }),
@@ -123690,7 +123690,7 @@ function SettingsModal({ config: config2, onClose, initialSection }) {
                                 }
                               )
                             ] }),
-                            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 12, lineHeight: "16px", color: "var(--cth-ink-500)" }, children: "Pipe a Slack channel's messages straight into Michael's queue." })
+                            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 12, lineHeight: "16px", color: "var(--cth-ink-500)" }, children: "Pipe a Slack channel's messages straight into Doraemon's queue." })
                           ] }),
                           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: 8 }, children: [
                             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: {
@@ -124038,7 +124038,7 @@ function SettingsModal({ config: config2, onClose, initialSection }) {
                           "Callers POST to a webhook's URL with its secret in the",
                           " ",
                           /* @__PURE__ */ jsxRuntimeExports.jsx("code", { children: "x-md-webhook-secret" }),
-                          " header. Each one checks bodies against its own JSON schema — edit that in the Triggers tab of Michael's Command Center, where the history of everything that arrived lives too."
+                          " header. Each one checks bodies against its own JSON schema — edit that in the Triggers tab of Doraemon's Command Center, where the history of everything that arrived lives too."
                         ] }),
                         webhookNote && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 12, color: "var(--cth-ink-500)" }, children: webhookNote })
                       ] }),
@@ -124203,10 +124203,10 @@ function SettingsModal({ config: config2, onClose, initialSection }) {
                           color: "var(--cth-ink-500)",
                           textTransform: "uppercase",
                           marginBottom: 2
-                        }, children: "Realtime Michael" }),
+                        }, children: "Realtime Doraemon" }),
                         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", flexDirection: "column", gap: 2 }, children: [
-                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 13, lineHeight: "20px", color: "var(--cth-ink-900)" }, children: "Voice chat with Michael" }),
-                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 12, lineHeight: "16px", color: "var(--cth-ink-500)" }, children: "Talk to the orchestrator in real time. Toggle it on from Michael's tab; choose which microphone and speaker the voice loop uses here." })
+                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 13, lineHeight: "20px", color: "var(--cth-ink-900)" }, children: "Voice chat with Doraemon" }),
+                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { fontSize: 12, lineHeight: "16px", color: "var(--cth-ink-500)" }, children: "Talk to the orchestrator in real time. Toggle it on from Doraemon's tab; choose which microphone and speaker the voice loop uses here." })
                         ] }),
                         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: {
                           display: "flex",
@@ -124224,7 +124224,7 @@ function SettingsModal({ config: config2, onClose, initialSection }) {
                             textTransform: "uppercase"
                           }, children: "OpenAI API key · voice" }),
                           /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { style: { fontSize: 12, lineHeight: "17px", color: "var(--cth-ink-700)" }, children: [
-                            "Talking to Michael runs on OpenAI’s Realtime API — speech in, speech out, over a live connection to ",
+                            "Talking to Doraemon runs on OpenAI’s Realtime API — speech in, speech out, over a live connection to ",
                             /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { style: { fontFamily: "var(--cth-font-mono)" }, children: REALTIME_MODEL }),
                             ". That is a different service from the Claude subscription your agents run on, so it needs its own ",
                             /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: "OpenAI API key" }),
@@ -124275,7 +124275,7 @@ function SettingsModal({ config: config2, onClose, initialSection }) {
                               background: hasOpenAiKey ? "var(--cth-mint)" : "var(--cth-ink-300)",
                               boxShadow: "inset 0 0 0 1px var(--cth-ink-300)"
                             } }),
-                            openAiVoiceNote || (hasOpenAiKey ? "Key saved — Talk is ready. Start it from Michael’s card." : "No key yet — Talk stays disabled until one is saved.")
+                            openAiVoiceNote || (hasOpenAiKey ? "Key saved — Talk is ready. Start it from Doraemon’s card." : "No key yet — Talk stays disabled until one is saved.")
                           ] })
                         ] }),
                         /* @__PURE__ */ jsxRuntimeExports.jsx(RealtimeDevicePicker, {}),
@@ -124314,7 +124314,7 @@ function SettingsModal({ config: config2, onClose, initialSection }) {
                         lineHeight: "14px",
                         color: "#6E1423"
                       }, children: "DANGER ZONE" }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { margin: 0, fontSize: 13, lineHeight: "20px", color: "var(--cth-ink-700)" }, children: "Reset wipes Michael's memories, the entire hive (every agent, message, task, and the board), the semantic-memory palace, and all settings - then takes you back to onboarding." }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { margin: 0, fontSize: 13, lineHeight: "20px", color: "var(--cth-ink-700)" }, children: "Reset wipes Doraemon's memories, the entire hive (every agent, message, task, and the board), the semantic-memory palace, and all settings - then takes you back to onboarding." }),
                       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(PixelButton, { variant: "destructive", size: "md", onClick: () => setConfirming(true), children: "reset & start over" }) })
                     ] })
                   ] })
@@ -124917,7 +124917,7 @@ function FullscreenTerminal({ config: config2 }) {
         padding: 12,
         gap: 10
       }, children: agent.isGod ? (
-        // Michael runs the floor from the command center — its tabs (tasks,
+        // Doraemon runs the floor from the command center — its tabs (tasks,
         // ask me, triggers, memory, graph…) are the whole point of selecting
         // him, and fullscreen used to drop them for a bare terminal.
         // Column so the panel's `height: 100%` resolves against a definite
@@ -125315,7 +125315,7 @@ function Header({ agent }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { name: "code" }),
         " IDE"
       ] }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(RealtimeMichaelToggle, {}),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(RealtimeDoraemonToggle, {}),
       agent.isGod && /* @__PURE__ */ jsxRuntimeExports.jsx(CostHud, { compact: true }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(PixelButton, { variant: "secondary", size: "sm", onClick: openTerminal, disabled: openState === "opening", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "span",
@@ -314531,7 +314531,7 @@ function App() {
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { flex: 1, minHeight: 0, minWidth: 0, position: "relative" }, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(OfficeFloor, {}),
         /* @__PURE__ */ jsxRuntimeExports.jsx(MemoryPanel, {}),
-        agentCount === 0 && godStatus === "booting" && /* @__PURE__ */ jsxRuntimeExports.jsx(MichaelBooting, {}),
+        agentCount === 0 && godStatus === "booting" && /* @__PURE__ */ jsxRuntimeExports.jsx(DoraemonBooting, {}),
         agentCount === 0 && godStatus !== "booting" && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: {
           position: "absolute",
           inset: 0,
@@ -314577,7 +314577,7 @@ function App() {
           color: "var(--cth-ink-500)"
         }, children: "WAKING THE FLOOR" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { style: { margin: 0, fontSize: 13, textAlign: "center", color: "var(--cth-ink-700)" }, children: [
-          "Michael is clocking in.",
+          "Doraemon is clocking in.",
           /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
           "The terminal will land here once he's seated."
         ] })
